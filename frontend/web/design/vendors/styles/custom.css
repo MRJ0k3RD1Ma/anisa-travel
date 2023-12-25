@@ -1,0 +1,6 @@
+span.select2{
+    width: 100% !important;
+}
+.custom-file-input, .custom-file-label, .custom-select, .form-control{
+    height: auto !important;
+}
