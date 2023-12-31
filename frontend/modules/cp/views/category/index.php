@@ -101,7 +101,15 @@ use yii\widgets\ActiveForm;
     }
     .menu-level ul li {
         margin: 0.5em 0;
-
+        display: block;
+        position: relative;
+    }
+    .menu-level ul li .btn{
+        margin: 0 0 0 10px;
+        padding: 5px !important;
+    }
+    .menu-level ul li .btn span{
+        background: transparent;
     }
 
     .menu-level ul li a.toggle,.menu-level ul li span {

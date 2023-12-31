@@ -45,9 +45,11 @@ class Menu extends Component{
                 $data .= "<ul class='inner'>";
                 $data = self::SubGenAccord($item->id,$data);
                 $data .= "</ul>";
+
             }else{
                 $data .= "<span>$item->name</span>";
             }
+            $data .= "<div style='position: absolute; right: 0; top: 0;'><button class='btn btn-danger'><span class='fa fa-trash'></span></button><button class='btn btn-primary'><span class='fa fa-pencil'></span></button></div>";
             $data .= "</li>";
         }
         $data .= "</ul>";
@@ -65,8 +67,10 @@ class Menu extends Component{
                 $data = self::SubGenAccord($item->id,$data);
                 $data .= "</ul>";
             }else{
-                $data .= "<span>$item->name</span>";
+                $data .= "<span>$item->name</span> ";
             }
+            $data .= "<div style='position: absolute; right: 0; top: 0;'><button class='btn btn-danger'><span class='fa fa-trash'></span></button><button class='btn btn-primary'><span class='fa fa-pencil'></span></button></div>";
+
             $data .= "<li>";
         }
 
