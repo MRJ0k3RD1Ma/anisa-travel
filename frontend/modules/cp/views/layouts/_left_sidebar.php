@@ -44,7 +44,7 @@
                 </li>
 
                 <li>
-                    <a href="<?= Yii::$app->urlManager->createUrl(['/cp/user'])?>" class="dropdown-toggle no-arrow class="<?= Yii::$app->controller->id == 'user' ? 'active' : ''?>"">
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cp/category'])?>" class="dropdown-toggle no-arrow class="<?= Yii::$app->controller->id == 'user' ? 'active' : ''?>"">
                     <span class="micon bi bi-menu-button-wide"></span>
                     <span class="mtext">Menular</span>
                     </a>

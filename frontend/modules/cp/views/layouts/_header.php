@@ -22,7 +22,7 @@
                     <span class="user-name"><?= Yii::$app->user->identity->name ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    <a class="dropdown-item" href="<?= Yii::$app->urlManager->createUrl(['/default/profil']) ?>"><i
+                    <a class="dropdown-item" href="<?= Yii::$app->urlManager->createUrl(['/cp/default/profil']) ?>"><i
                                 class="dw dw-user1"></i> Profil</a>
                     <a class="dropdown-item" href="<?= Yii::$app->urlManager->createUrl(['/site/logout'])?>" data-method="post"><i class="dw dw-logout"></i> Chiqish</a>
                 </div>
