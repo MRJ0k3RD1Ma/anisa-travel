@@ -43,6 +43,12 @@ class CategoryController extends Controller
     {
         $model = new Category();
         if($model->load($this->request->post())){
+            $model->status = 1;
+            $model->sort = Category::find()->where(['parent_id'=>$model->parent_id])->max('sort');
+            if(!$model->sort){
+                $model->sort = 0;
+            }
+            $model->sort ++;
             if($model->save()){
                 Yii::$app->session->setFlash('success','Menu qo`shildi');
             }else{
@@ -52,6 +58,7 @@ class CategoryController extends Controller
         }
         return $this->renderAjax('_form',['model'=>$model]);
     }
+
 
     public function actionUpdate($id)
     {
@@ -68,6 +75,17 @@ class CategoryController extends Controller
         return $this->renderAjax('_form',['model'=>$model]);
     }
 
+
+    public function actionDelete($id)
+    {
+        $model = $this->findModel($id);
+        $model->status = -1;
+        if($model->save(false)){
+            Yii::$app->session->setFlash('success','Menu o`chirildi');
+        }else{
+            Yii::$app->session->setFlash('success','Menuni o`chirishda xatolik. Qayta urinib ko`ring');
+        }
+    }
 
     protected function findModel($id)
     {

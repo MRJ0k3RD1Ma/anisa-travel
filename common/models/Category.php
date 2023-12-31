@@ -37,7 +37,7 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type_id'], 'required'],
+            [['type_id','code','name','name_ru','name_en'], 'required'],
             [['type_id', 'parent_id', 'status', 'sort'], 'integer'],
             [['code', 'name', 'name_ru', 'name_en', 'icon', 'icon_type'], 'string', 'max' => 255],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => CategoryType::class, 'targetAttribute' => ['type_id' => 'id']],
@@ -58,7 +58,7 @@ class Category extends \yii\db\ActiveRecord
             'icon' => 'Icon',
             'icon_type' => 'Icon turi',
             'type_id' => 'Turi',
-            'parent_id' => 'Yuqorida turuvchi',
+            'parent_id' => 'Yuqorida turuvchi menu',
             'status' => 'Status',
             'sort' => 'Sort',
         ];

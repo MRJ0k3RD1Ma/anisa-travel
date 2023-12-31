@@ -39,6 +39,21 @@ use yii\widgets\ActiveForm;
     </div>
 </div>
 
+    <div class="modal hide fade bs-example-modal-lg" id="updatemenu" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        Yangi menu qo'shish
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> × </button>
+                </div>
+                <div class="modal-body updatemenubody">
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 <?php
 
@@ -46,6 +61,11 @@ use yii\widgets\ActiveForm;
          $('.addmenu').click(function(){
             var url = this.value;
             $('#addmenu').modal('show').find('.modal-body.addmenubody').load(url);
+        }); 
+        
+        $('.updatemenu').click(function(){
+            var url = this.value;
+            $('#updatemenu').modal('show').find('.modal-body.updatemenubody').load(url);
         });
     ")
 ?>
