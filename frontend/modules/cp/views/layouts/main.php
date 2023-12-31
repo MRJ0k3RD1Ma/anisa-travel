@@ -77,7 +77,7 @@ AppAsset::register($this);
                 </div>
             </div>
             <div class="footer-wrap pd-20 mb-20 card-box">
-                KIPMonit - <a href="#" target="_blank">FC "MILLION DASTUR"</a> All rights reserved &copy;<?= date('Y')?>
+                Anisa-Travel - <a href="#" target="_blank">FC "MILLION DASTUR"</a> All rights reserved &copy;<?= date('Y')?>
             </div>
         </div>
 

@@ -1,7 +1,7 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="<?= Yii::$app->urlManager->createUrl(['/cp/'])?>">
-            <img src="/design/vendors/images/deskapp-logo.png" alt="" class="dark-logo" />
+            <h4>Anisa-travel</h4>
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -16,26 +16,40 @@
                         <span class="mtext">Dashboard</span>
                     </a>
                 </li>
+
+
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle ">
-						<span class="micon bi bi-person-rolodex"></span>
-                        <span class="mtext">Kontragentlar</span>
+                        <span class="micon bi bi-person-hearts"></span>
+                        <span class="mtext">Lidlar</span>
                     </a>
                     <ul class="submenu">
-                        <li><a class="<?= Yii::$app->controller->id == 'individual' ? 'active' : ''?>" href="<?= Yii::$app->urlManager->createUrl(['/cp/individual'])?>">Jismoniy shaxslar</a></li>
-                        <li><a class="<?= Yii::$app->controller->id == 'legal' ? 'active' : ''?>" href="<?= Yii::$app->urlManager->createUrl(['/cp/legal'])?>">Yuridik shaxslar</a></li>
+                        <li><a class="<?= Yii::$app->controller->id == 'travel' ? 'active' : ''?>" href="<?= Yii::$app->urlManager->createUrl(['/cp/contact'])?>">Bog'lanish</a></li>
+                        <li><a class="<?= Yii::$app->controller->id == 'news' ? 'active' : ''?>" href="<?= Yii::$app->urlManager->createUrl(['/cp/order'])?>">Buyurtmalar</a></li>
                     </ul>
                 </li>
+
+
+
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle ">
-                        <span class="micon bi bi-card-list"></span>
-                        <span class="mtext">Shartnomalar</span>
+						<span class="micon bi bi-newspaper"></span>
+                        <span class="mtext">Postlar</span>
                     </a>
                     <ul class="submenu">
-                        <li><a class="<?= (Yii::$app->controller->id == 'contract' && Yii::$app->controller->action->id != 'consept')? 'active' : ''?>" href="<?= Yii::$app->urlManager->createUrl(['/cp/contract'])?>">Shartnomalar ro`yhati</a></li>
-                        <li><a class="<?= (Yii::$app->controller->id == 'contract' && Yii::$app->controller->action->id == 'consept') ? 'active' : ''?>" href="<?= Yii::$app->urlManager->createUrl(['/cp/contract/consept'])?>">Tasdiqlanishi kutilayotgan</a></li>
+                        <li><a class="<?= Yii::$app->controller->id == 'travel' ? 'active' : ''?>" href="<?= Yii::$app->urlManager->createUrl(['/cp/travel'])?>">Sayohatlar</a></li>
+                        <li><a class="<?= Yii::$app->controller->id == 'news' ? 'active' : ''?>" href="<?= Yii::$app->urlManager->createUrl(['/cp/news'])?>">Yangiliklar</a></li>
+                        <li><a class="<?= Yii::$app->controller->id == 'service' ? 'active' : ''?>" href="<?= Yii::$app->urlManager->createUrl(['/cp/service'])?>">Xizmatlar</a></li>
                     </ul>
                 </li>
+
+                <li>
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cp/user'])?>" class="dropdown-toggle no-arrow class="<?= Yii::$app->controller->id == 'user' ? 'active' : ''?>"">
+                    <span class="micon bi bi-menu-button-wide"></span>
+                    <span class="mtext">Menular</span>
+                    </a>
+                </li>
+
 
                 <li>
                     <a href="<?= Yii::$app->urlManager->createUrl(['/cp/user'])?>" class="dropdown-toggle no-arrow class="<?= Yii::$app->controller->id == 'user' ? 'active' : ''?>"">

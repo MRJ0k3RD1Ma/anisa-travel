@@ -24,7 +24,6 @@ use yii\web\IdentityInterface;
  * @property string $phone
  *
  * @property UserRole $role
- * @property CLegal[] $Legals
  */
 class User extends \yii\db\ActiveRecord  implements IdentityInterface
 {
@@ -80,15 +79,6 @@ class User extends \yii\db\ActiveRecord  implements IdentityInterface
             'phone' => 'Telefon raqami',
         ];
     }
-    /**
-     * Gets query for [[CLegals]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getLegals()
-    {
-        return $this->hasMany(CLegal::class, ['user_id' => 'id']);
-    }
 
     /**
      * Gets query for [[Role]].
@@ -99,13 +89,6 @@ class User extends \yii\db\ActiveRecord  implements IdentityInterface
     {
         return $this->hasOne(UserRole::class, ['id' => 'role_id']);
     }
-
-    /**
-     * Gets query for [[Soato]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-
 
 
 

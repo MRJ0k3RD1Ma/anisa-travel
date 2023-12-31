@@ -3,10 +3,10 @@
         <div class="menu-icon bi bi-list"></div>
         <div class="search-toggle-icon bi bi-search" data-toggle="header_search"></div>
         <div class="header-search">
-            <form action="<?= Yii::$app->urlManager->createUrl(['/cp/legal/index'])?>" method="get">
+            <form action="" method="get">
                 <div class="form-group mb-0">
                     <i class="dw dw-search2 search-icon"></i>
-                    <input type="text" name="CLegalSearch[inn]" class="form-control search-input" style="font-size: 15px; height: 45px !important;" placeholder="Qidirish uchun STIR(INN) kiriting"/>
+                    <input type="text"  class="form-control search-input" style="font-size: 15px; height: 45px !important;" placeholder="Qidirish uchun kalit so'z kiriting"/>
                 </div>
             </form>
         </div>
