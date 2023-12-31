@@ -1,5 +1,6 @@
 <?php
 namespace frontend\components;
+use common\models\Category;
 use yii\base\Component;
 
 class Menu extends Component{
@@ -31,4 +32,45 @@ class Menu extends Component{
 
         return $data;
     }
+
+    public static function Accord(){
+        $model = \common\models\Category::find()->where(['parent_id'=>0])->orderBy(['sort'=>SORT_ASC])->all();
+
+        $data = "<ul class=\"accordion\">";
+
+        foreach ($model as $item){
+            $data .= "<li>";
+            if(Category::find()->where(['parent_id'=>$item->id])->count() > 0){
+                $data .= "<a class=\"toggle\" href=\"javascript:void(0);\">{$item->name}</a>";
+                $data .= "<ul class='inner'>";
+                $data = self::SubGenAccord($item->id,$data);
+                $data .= "</ul>";
+            }else{
+                $data .= "<span>$item->name</span>";
+            }
+            $data .= "</li>";
+        }
+        $data .= "</ul>";
+        return $data;
+    }
+    protected function SubGenAccord($id,$data)
+    {
+        $model = \common\models\Category::find()->where(['parent_id'=>$id])->orderBy(['sort'=>SORT_ASC])->all();
+
+        foreach ($model as $item){
+            $data .= "<li>";
+            if(Category::find()->where(['parent_id'=>$item->id])->count() > 0){
+                $data .= "<a class=\"toggle\" href=\"javascript:void(0);\">{$item->name}</a>";
+                $data .= "<ul class='inner'>";
+                $data = self::SubGenAccord($item->id,$data);
+                $data .= "</ul>";
+            }else{
+                $data .= "<span>$item->name</span>";
+            }
+            $data .= "<li>";
+        }
+
+        return $data;
+    }
+
 }
