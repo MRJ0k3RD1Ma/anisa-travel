@@ -4,10 +4,12 @@ namespace frontend\modules\cp\controllers;
 
 use common\models\Travel;
 use common\models\search\TravelSearch;
+use common\models\TravelImage;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\UploadedFile;
+use Yii;
 /**
  * TravelController implements the CRUD actions for Travel model.
  */
@@ -68,10 +70,21 @@ class TravelController extends Controller
     public function actionCreate()
     {
         $model = new Travel();
-
+        $model->user_id = Yii::$app->user->id;
+        $model->modify_id = Yii::$app->user->id;
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->setCode($model->code);
+                if($model->image = UploadedFile::getInstance($model,'image')){
+                    $name = 'image/'.microtime(true).'.'.$model->image->extension;
+                    $model->image->saveAs(Yii::$app->basePath.'/web/upload/'.$name);
+                    $model->image = $name;
+                }else{
+                    $model->image = 'default/default.jpg';
+                }
+                if($model->save()){
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -92,8 +105,19 @@ class TravelController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        $img = $model->image;
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->modify_id = Yii::$app->user->id;
+            if($model->image = UploadedFile::getInstance($model,'image')){
+                $name = 'image/'.microtime(true).'.'.$model->image->extension;
+                $model->image->saveAs(Yii::$app->basePath.'/web/upload/'.$name);
+                $model->image = $name;
+            }else{
+                $model->image = $img;
+            }
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -102,6 +126,36 @@ class TravelController extends Controller
         ]);
     }
 
+    public function actionAddimage($id)
+    {
+        $travel = $this->findModel($id);
+        $model = new TravelImage();
+        $model->travel_id = $id;
+        $model->id = TravelImage::find()->where(['travel_id'=>$id])->max('id');
+        if(!$model->id){
+            $model->id = 0;
+        }
+        $model->id++;
+        if($this->request->isPost){
+            if($model->image = UploadedFile::getInstance($model,'image')){
+                $name = 'image/'.microtime(true).'.'.$model->image->extension;
+                $model->image->saveAs(Yii::$app->basePath.'/web/upload/'.$name);
+                $model->image = $name;
+                $model->save();
+            }
+
+        }
+
+        return $this->redirect(['view','id'=>$id]);
+    }
+
+    public function actionDeleteimage($travel_id,$id)
+    {
+        if($model = TravelImage::findOne(['travel_id'=>$travel_id,'id'=>$id])){
+            $model->delete();
+        }
+        return $this->redirect(['view','id'=>$travel_id]);
+    }
     /**
      * Deletes an existing Travel model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

@@ -10,14 +10,12 @@ use yii\widgets\ActiveForm;
 
 <div class="travel-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <div class="row">
         <div class="col-md-6">
 
             <?= $form->field($model, 'cat_id')->dropDownList(\frontend\components\Menu::Sayohat(),['prompt'=>'Menuni tanlang']) ?>
-
-            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
             <div class="row">
                 <div class="col-md-6">
@@ -48,7 +46,7 @@ use yii\widgets\ActiveForm;
         <div class="col-md-6">
 
             <div class="form-group" style="margin-bottom: 33px;">
-                <img src="/upload/<?= $model->isNewRecord ? 'default/avatar.png' : $model->image?>" id="blah" style="height:200px; width:auto;">
+                <img src="/upload/<?= $model->isNewRecord ? 'default/default.jpg' : $model->image?>" id="blah" style="height:200px; width:auto;">
             </div>
             <div class="form-group">
                 <label>Asosiy rasm</label>
@@ -58,18 +56,19 @@ use yii\widgets\ActiveForm;
                 </div>
             </div>
 
-
             <?= $form->field($model, 'is_fly')->checkbox(['value'=>1]) ?>
 
         </div>
     </div>
 
 
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'short')->textarea(['rows' => 6]) ?>
 
 
     <?= $form->field($model, 'detail')->widget(\dosamigos\tinymce\TinyMce::className(), [
-        'options' => ['rows' => 30],
+        'options' => ['rows' => 20],
         'language' => 'ru',
 
         'clientOptions' => [
@@ -77,12 +76,71 @@ use yii\widgets\ActiveForm;
                 'image',
                 "advlist autolink lists link charmap print preview anchor",
                 "searchreplace visualblocks code fullscreen",
-                "insertdatetime media table contextmenu paste",
-                'advcode',
+                "insertdatetime media table contextmenu paste advcode",
             ],
             'relative_urls'=>false,
             'image_advtab' => true,
-            'images_upload_url'=> Yii::$app->urlManager->createUrl(['admin/photo/upload']),
+            'images_upload_url'=> Yii::$app->urlManager->createUrl(['/cp/photo/upload']),
+            'file_picker_types'=>'file image media',
+            'file_browser_callback_types'=>'file image media',
+            'content_css'=> [
+                '//fonts.googleapis.com/css?family=Roboto',
+                '//www.tinymce.com/css/codepen.min.css'
+            ],
+            'toolbar' => "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link  image | print preview media | file | forecolor backcolor emoticons | code",
+
+        ]
+    ]); ?>
+
+    <?= $form->field($model, 'name_ru')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'short_ru')->textarea(['rows' => 6]) ?>
+
+
+    <?= $form->field($model, 'detail_ru')->widget(\dosamigos\tinymce\TinyMce::className(), [
+        'options' => ['rows' => 20],
+        'language' => 'ru',
+
+        'clientOptions' => [
+            'plugins' => [
+                'image',
+                "advlist autolink lists link charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table contextmenu paste advcode",
+            ],
+            'relative_urls'=>false,
+            'image_advtab' => true,
+            'images_upload_url'=> Yii::$app->urlManager->createUrl(['/cp/photo/upload']),
+            'file_picker_types'=>'file image media',
+            'file_browser_callback_types'=>'file image media',
+            'content_css'=> [
+                '//fonts.googleapis.com/css?family=Roboto',
+                '//www.tinymce.com/css/codepen.min.css'
+            ],
+            'toolbar' => "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link  image | print preview media | file | forecolor backcolor emoticons | code",
+
+        ]
+    ]); ?>
+
+    <?= $form->field($model, 'name_en')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'short_en')->textarea(['rows' => 6]) ?>
+
+
+    <?= $form->field($model, 'detail_en')->widget(\dosamigos\tinymce\TinyMce::className(), [
+        'options' => ['rows' => 20],
+        'language' => 'ru',
+
+        'clientOptions' => [
+            'plugins' => [
+                'image',
+                "advlist autolink lists link charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table contextmenu paste advcode",
+            ],
+            'relative_urls'=>false,
+            'image_advtab' => true,
+            'images_upload_url'=> Yii::$app->urlManager->createUrl(['/cp/photo/upload']),
             'file_picker_types'=>'file image media',
             'file_browser_callback_types'=>'file image media',
             'content_css'=> [
@@ -104,7 +162,6 @@ use yii\widgets\ActiveForm;
 </div>
 
 <?php
-$url = Yii::$app->urlManager->createUrl(['/cp/default/istravel']);
 $this->registerJs("
 
         function readURL(input) {
@@ -122,12 +179,5 @@ $this->registerJs("
         $('#travel-image').change(function() {
           readURL(this);
         });
-  
-    $('#travel-cat_id').change(function(){
-        $.get('{$url}?id='+$('#travel-cat_id').val()).done(function(data){
-            if(data == 0){
-                alert('Bu menu sayohat menusi emas. Boshqa menuni tanlang!');
-            }
-        })
-    })
+ 
 ");
