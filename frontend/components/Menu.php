@@ -33,6 +33,20 @@ class Menu extends Component{
         return $data;
     }
 
+    public static function Sayohat(){
+        $model = \common\models\Category::find()->where(['parent_id'=>0])->orderBy(['sort'=>SORT_ASC])->all();
+
+        $data = [];
+        foreach ($model as $item){
+            $data[$item->id] = $item->name;
+            $data = self::SubGen($item->id,$data,0);
+        }
+
+        return $data;
+    }
+
+
+
     public static function Accord(){
         $model = \common\models\Category::find()->where(['parent_id'=>0])->orderBy(['sort'=>SORT_ASC])->all();
 

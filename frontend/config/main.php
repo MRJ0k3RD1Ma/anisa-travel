@@ -16,7 +16,7 @@ return [
             'class' => 'frontend\modules\cp\Module',
         ],
     ],
-    'language'=>'uz',
+    'language'=>'ru',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -47,6 +47,13 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'class' => 'codemix\localeurls\UrlManager',
+//                        'defaultLanguage'=>'ru',
+            'enableDefaultLanguageUrlCode' => true,
+            // List all supported languages here
+            // Make sure, you include your app's default language.
+            'languages' => ['ru','en','uz'],
+            'on languageChanged' => '\frontend\components\Lang::onLanguageChanged',
             'rules' => [
             ],
         ],

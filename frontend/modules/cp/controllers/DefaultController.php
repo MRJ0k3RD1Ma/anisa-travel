@@ -2,6 +2,7 @@
 
 namespace frontend\modules\cp\controllers;
 
+use common\models\Category;
 use common\models\CIndividual;
 use common\models\CLegal;
 use common\models\Contract;
@@ -74,6 +75,17 @@ class DefaultController extends Controller
         }else{
             throw new NotFoundHttpException('Bunday foydalanuvchi topilmadi');
         }
+    }
+
+
+    public function actionIstravel($id)
+    {
+        if($model = Category::findOne($id)){
+            if($model->type_id == 1){
+                return 1;
+            }
+        }
+        return 0;
     }
 
 }
