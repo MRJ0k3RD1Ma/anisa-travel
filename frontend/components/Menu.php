@@ -8,6 +8,8 @@ class Menu extends Component{
     public static function Pretty(){
         $model = \common\models\Category::find()->where(['parent_id'=>0])->orderBy(['sort'=>SORT_ASC])->all();
 
+
+
         $data = [];
         $data[0] = 'Alohida';
         foreach ($model as $item){
