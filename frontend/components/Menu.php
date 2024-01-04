@@ -18,7 +18,7 @@ class Menu extends Component{
         return $data;
     }
 
-    protected function SubGen($id,$data,$level)
+    public static  function SubGen($id,$data,$level)
     {
         $model = \common\models\Category::find()->where(['parent_id'=>$id])->orderBy(['sort'=>SORT_ASC])->all();
         $code = "";
@@ -69,7 +69,7 @@ class Menu extends Component{
         $data .= "</ul>";
         return $data;
     }
-    protected function SubGenAccord($id,$data)
+    public static  function SubGenAccord($id,$data)
     {
         $model = \common\models\Category::find()->where(['parent_id'=>$id])->orderBy(['sort'=>SORT_ASC])->all();
 
@@ -89,7 +89,9 @@ class Menu extends Component{
         }
 
         return $data;
-    }public static function Home(){
+    }
+
+    public static function Home(){
         $model = \common\models\Category::find()->where(['parent_id'=>0])->orderBy(['sort'=>SORT_ASC])->all();
 
         $data = "";
@@ -138,7 +140,7 @@ class Menu extends Component{
         $data .= "";
         return $data;
     }
-    protected function SubGenHome($id,$data)
+    public static function SubGenHome($id,$data)
     {
         $model = \common\models\Category::find()->where(['parent_id'=>$id])->orderBy(['sort'=>SORT_ASC])->all();
 
@@ -187,42 +189,5 @@ class Menu extends Component{
         return $data;
     }
 
-
-    /*
-     *
-     *
-     *
-     * <li class="dropdown">
-                                <a href="category.html">
-                                    <span>Tours</span>
-                                    <i class="ti ti-chevron-down dropdown-indicator"></i>
-                                </a>
-                                <ul>
-                                    <li><a href="destination.html">Destinations</a></li>
-                                    <li><a href="category.html">Categories</a></li>
-                                    <li><a href="country.html">Tour by country</a></li>
-                                    <li><a href="city.html">Tour By city</a></li>
-                                    <li><a href="tour-list.html">Tours list</a></li>
-                                    <li><a href="tour-grid.html">Tours grid</a></li>
-                                    <li><a href="single-tour.html">Single tour</a></li>
-                                    <li class="dropdown">
-                                        <a href="single-tour.html">
-                                            <span>Book tour</span>
-                                            <i class="ti ti-chevron-right dropdown-indicator"></i>
-                                        </a>
-                                        <ul>
-                                            <li><a href="cart.html">Shopping cart (step 1)</a></li>
-                                            <li><a href="checkout.html">Checkout (step 2)</a></li>
-                                            <li><a href="payment.html">Payment (step 3)</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="blog-grid.html">
-                                    <span>Blog</span>
-                                </a>
-                            </li>
-     */
 
 }
