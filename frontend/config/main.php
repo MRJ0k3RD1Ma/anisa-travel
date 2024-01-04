@@ -52,7 +52,7 @@ return [
             'enableDefaultLanguageUrlCode' => true,
             // List all supported languages here
             // Make sure, you include your app's default language.
-            'languages' => ['ru','en','uz'],
+            'languages' => ['ru',],
             'on languageChanged' => '\frontend\components\Lang::onLanguageChanged',
             'rules' => [
             ],

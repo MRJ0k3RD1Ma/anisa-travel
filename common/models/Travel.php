@@ -126,6 +126,18 @@ class Travel extends \yii\db\ActiveRecord
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
+    public function getNameLg()
+    {
+        $lang = Yii::$app->language;
+        if($lang == 'uz'){
+            $name = $this->name;
+        }elseif($lang == 'en'){
+            $name = $this->name_en;
+        }elseif($lang == 'ru'){
+            $name = $this->name_ru;
+        }
+        return $name;
+    }
     public function setCode($code)
     {
         $name = trim($this->name);

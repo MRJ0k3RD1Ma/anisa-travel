@@ -11,8 +11,7 @@
                                 <img class="logo-light" src="/frntd/img/logo-footer.png" alt="">
                             </a>
                             <p class="lh-lg">
-                                <em>Tourago is a leading European tour booking platform in the world, with more than 10 years of operation Tourago is known as a reputable travel service provider.</em>
-                                <a href="#">[+]</a>
+                                <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad distinctio labore molestias? Aspernatur, assumenda culpa cum cupiditate dolores dolorum et, fugiat id minima mollitia necessitatibus odit provident quam rerum vitae?</em>
                             </p>
                         </div>
                     </div>
@@ -21,22 +20,22 @@
                 <div class="col-12 col-xl-3 col-lg-4 col-md-6">
                     <!-- Contact Info -->
                     <div class="footer-widget mb-4">
-                        <h5 class="widget-title mb-4 text-white fw-bold-1">Contact Info</h5>
+                        <h5 class="widget-title mb-4 text-white fw-bold-1">Контактная информация</h5>
                         <div class="contact-box">
                             <p>
                                     <span>
-                                        No 123 St. Madison Ave,
-                                        <br> New York City, NY 10017, USA.
+                                        Город Ургенч
+                                        <br> Хорезмской области.
                                     </span>
                             </p>
                             <p>
-                                <span>+1 321-654-9876 (Ext: 123).</span>
+                                <span>+998 (97) 135 04-46</span>
                             </p>
                             <p>
-                                <a href="#">Booking@example.com</a>
+                                <a href="#">info@anisatravel.uz</a>
                             </p>
                             <p>
-                                <a href="#">www.example.com</a>
+                                <a href="#">www.anisatravel.uz</a>
                             </p>
                         </div>
                     </div>
@@ -45,38 +44,38 @@
                 <div class="col-12 col-xl-3 col-lg-4 col-md-6">
                     <!-- Quick Links -->
                     <div class="footer-widget mb-4">
-                        <h5 class="widget-title mb-4 text-white fw-bold-1">Quick Links</h5>
+                        <h5 class="widget-title mb-4 text-white fw-bold-1">Быстрые ссылки</h5>
                         <div class="link-box">
                             <div class="row g-3">
                                 <div class="col-6">
                                     <ul class="list-unstyled footer-list mb-0">
                                         <li>
-                                            <a href="about.html">About</a>
+                                            <a href="#">О Нас</a>
                                         </li>
                                         <li>
-                                            <a href="team.html">Team</a>
+                                            <a href="#">Команда</a>
                                         </li>
                                         <li>
-                                            <a href="blog-grid.html">Blog</a>
+                                            <a href="#"></a>
                                         </li>
                                         <li>
-                                            <a href="contact.html">Contact</a>
+                                            <a href="#">Контакт</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="col-6">
                                     <ul class="list-unstyled footer-list mb-0">
                                         <li>
-                                            <a href="categories">Categories</a>
+                                            <a href="#">Тури</a>
                                         </li>
                                         <li>
-                                            <a href="destination.html">Destinations</a>
+                                            <a href="#">Туры</a>
                                         </li>
                                         <li>
-                                            <a href="tour-grid.html">Tours</a>
+                                            <a href="#">Новости</a>
                                         </li>
                                         <li>
-                                            <a href="#">Sitemap</a>
+                                            <a href="#">Карта сайта</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -88,7 +87,7 @@
                 <div class="col-12 col-xl-3 col-lg-4 col-md-6">
                     <!-- Get app & Social -->
                     <div class="footer-widget mb-4">
-                        <h5 class="widget-title mb-4 text-white fw-bold-1">Get the app</h5>
+                        <h5 class="widget-title mb-4 text-white fw-bold-1">Cоциальная сеть</h5>
                         <div class="get-app-box">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
@@ -108,7 +107,7 @@
                             </ul>
                         </div>
                         <div class="footer-social">
-                            <h5 class="widget-title social-title mb-4 text-white fw-bold-1">Connect social</h5>
+                            <h5 class="widget-title social-title mb-4 text-white fw-bold-1">Подключайтесь к социальным сетям</h5>
                             <div class="social-list">
                                 <a href="#" class="btn-social btn-facebook"><i class="ti ti-brand-facebook"></i></a>
                                 <a href="#" class="btn-social btn-twitter"><i class="ti ti-brand-twitter"></i></a>
@@ -128,16 +127,16 @@
         <div class="footer-bottom pt-4 pb-2 fs-7">
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <p>© 2023 Tourago. All rights reserved.</p>
+                    <p>© 2023 Anisatravel. All rights reserved.</p>
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="bottom-link text-start text-md-end">
                         <ul class="list-inline">
                             <li class="list-inline-item me-4">
-                                <a href="#">Privacy Policy</a>
+                                <a href="#">Политика конфиденциальности</a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#">Terms of Use</a>
+                                <a href="#">Условия эксплуатации</a>
                             </li>
                         </ul>
                     </div>
