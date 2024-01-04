@@ -104,8 +104,21 @@ class Menu extends Component{
                 $name = $item->name_ru;
             }
             $data .= "<li>";
+            if($item->type_id == 1){
+                $url = Yii::$app->urlManager->createUrl(['/site/travel','code'=>$item->code]);
+            }elseif($item->type_id == 2){
+                $url = Yii::$app->urlManager->createUrl(['/site/news','code'=>$item->code]);
+            }elseif($item->type_id == 3){
+                $url = Yii::$app->urlManager->createUrl(['/site/services','code'=>$item->code]);
+            }elseif($item->type_id == 4){
+
+                $url = '#';
+
+            }
+
+
             if(Category::find()->where(['parent_id'=>$item->id])->count() > 0){
-                $data .= "<li class='dropdown'><a href='{}' target='{}'>
+                $data .= "<li class='dropdown'><a href='{$url}' target='{}'>
                                     <span>{$name}</span>
                                     <i class='ti ti-chevron-down dropdown-indicator'></i>
                                 </a>";
@@ -115,7 +128,7 @@ class Menu extends Component{
 
             }else{
                 $data .= "<li>
-                                <a href='{}' target='{}'>
+                                <a href='{$url}' target='{}'>
                                     <span>{$name}</span>
                                 </a>
                             </li>";
@@ -139,9 +152,20 @@ class Menu extends Component{
                 $name = $item->name_ru;
             }
             $data .= "<li>";
+            if($item->type_id == 1){
+                $url = Yii::$app->urlManager->createUrl(['/site/travel','code'=>$item->code]);
+            }elseif($item->type_id == 2){
+                $url = Yii::$app->urlManager->createUrl(['/site/news','code'=>$item->code]);
+            }elseif($item->type_id == 3){
+                $url = Yii::$app->urlManager->createUrl(['/site/services','code'=>$item->code]);
+            }elseif($item->type_id == 4){
+
+                $url = '#';
+
+            }
             if(Category::find()->where(['parent_id'=>$item->id])->count() > 0){
 
-                $data .= "<li class='dropdown'><a href='{}' target='{}'>
+                $data .= "<li class='dropdown'><a href='{$url}' target='{}'>
                                     <span>{$name}</span>
                                     <i class='ti ti-chevron-down dropdown-indicator'></i>
                                 </a>";
@@ -151,7 +175,7 @@ class Menu extends Component{
 
             }else{
                 $data .= "<li>
-                                <a href='{}' target='{}'>
+                                <a href='{$url}' target='{}'>
                                     <span>{$name}</span>
                                 </a>
                             </li>";
