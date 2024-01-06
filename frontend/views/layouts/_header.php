@@ -1,5 +1,5 @@
 <!-- HEADER -->
-<header id="header" class="header header-transparent">
+<header id="header" class="header <?php if(Yii::$app->controller->action->id == 'index') echo "header-transparent"?>">
     <div class="header-container">
         <!-- Logo & Nav -->
         <div class="logo-nav">

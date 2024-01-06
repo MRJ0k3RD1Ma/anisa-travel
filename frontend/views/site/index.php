@@ -34,7 +34,7 @@
         <!-- Check tour -->
         <div class="check-tour">
             <div class="container">
-                <form class="check-tour-form" action="#">
+                <form class="check-tour-form" action="<?= Yii::$app->urlManager->createUrl(['/site/search'])?>">
                     <div class="row g-2">
                         <div class="col-lg-10">
                             <div class="row g-2">
@@ -53,7 +53,7 @@
                             <div class="check-button">
                                 <button type="submit" class="btn btn-lg btn-primary w-100">
                                     <i class="ficon ficon-check-valid-state"></i>
-                                    <span>Find</span>
+                                    <span>Search</span>
                                 </button>
                             </div>
                             <!-- /Button -->

@@ -2,10 +2,13 @@
 
 namespace frontend\controllers;
 
+use common\models\Category;
+use common\models\Travel;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\data\Pagination;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -15,6 +18,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -90,6 +94,232 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+
+    public function actionSearch($s = null){
+
+        $name = "Результаты поиска";
+        $code = '11';
+        if($s == null){
+            $code = "desc";
+        }
+        $model = null;
+        switch ($code){
+            case 'desc': $model = Travel::find()->where(['status'=>1])->orderBy(['created'=>SORT_DESC]); break;
+            default :
+            {
+                $code = 'search';
+                $model = Travel::find()
+                    ->andFilterWhere([
+                        'or',
+                        ['like', 'name', $s],
+                        ['like', 'preview', $s],
+                        ['like', 'detail', $s],
+                    ]);
+                ;
+            }
+        }
+        Yii::$app->view->registerMetaTag([
+            'name'=>'twitter:card',
+            'content'=>'summery'
+        ]);
+
+        Yii::$app->view->registerMetaTag([
+            'name'=>'twitter:title',
+            'content'=>$name
+        ]);
+        Yii::$app->view->registerMetaTag([
+            'name'=>'twitter:description',
+            'content'=>$name
+        ]);
+
+        Yii::$app->view->registerMetaTag([
+            'name'=>'twitter:site',
+            'content'=>'anisatravel.uz/site/search?s='.$s
+        ]);
+        Yii::$app->view->registerMetaTag([
+            'name'=>'twitter:image',
+            'content'=>'/gerb.png'
+        ]);
+        $countQuery = clone $model;
+        $pages = new Pagination(['totalCount' => $countQuery->count(),'pageSize' => 10]);
+        $models = $model->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('news', [
+            'model' => $models,
+            'pages' => $pages,
+            'code'=>$s,
+            'name'=>$name,
+        ]);
+    }
+
+    public function actionNews($code = null){
+
+
+
+        if($code == null){
+            $code = "desc";
+            $name = "Все";
+        }
+        $model = null;
+        switch ($code){
+            case 'desc' : $model = Travel::find()->where(['status'=>1])->where(['>','id',3])->orderBy(['created'=>SORT_DESC]);break;
+            default :
+            {
+                if($cat_id = Category::findOne(['code'=>$code])){
+                    $lang = Yii::$app->language;
+                    if($lang == 'uz'){
+                        $lang = '';
+                    }else{
+                        $lang = '_'.$lang;
+                    }
+                    $code = $cat_id->code;
+                    $name = $cat_id->{'name'.$lang};
+                    $cat_id = $cat_id->id;
+                    $model = Travel::find()->where(['status' => 1])->andWhere(['cat_id'=>$cat_id])->orderBy(['created' => SORT_DESC]);
+
+                }else{
+                    $model = false;
+                }
+            }
+        }
+
+        if(!$model){
+            throw new NotFoundHttpException();
+        }
+
+        Yii::$app->view->registerMetaTag([
+            'name'=>'twitter:card',
+            'content'=>'summery'
+        ]);
+
+        Yii::$app->view->registerMetaTag([
+            'name'=>'twitter:title',
+            'content'=>$name
+        ]);
+        Yii::$app->view->registerMetaTag([
+            'name'=>'twitter:description',
+            'content'=>$name
+        ]);
+
+        Yii::$app->view->registerMetaTag([
+            'name'=>'twitter:site',
+            'content'=>'anisatravel.uz/site/news?code='.$code
+        ]);
+        Yii::$app->view->registerMetaTag([
+            'name'=>'twitter:image',
+            'content'=>'/gerb.png'
+        ]);
+
+
+        $countQuery = clone $model;
+        $pages = new Pagination(['totalCount' => $countQuery->count(),'pageSize' => 8]);
+        $models = $model->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        if($model->count()==0){
+            throw new NotFoundHttpException();
+        }
+
+
+        return $this->render('news', [
+            'model' => $models,
+            'pages' => $pages,
+            'code'=>$code,
+            'name'=>$name,
+        ]);
+    }
+    public function actionPage($code = null){
+        if($code == null){
+            throw new NotFoundHttpException();
+        }
+
+        $c = Category::findOne(['code'=>$code]);
+        $name=$c->name;
+        if($m = News::findOne(['cat_id'=>$c->id])){
+            Yii::$app->view->registerMetaTag([
+                'name'=>'twitter:card',
+                'content'=>'summery'
+            ]);
+
+            Yii::$app->view->registerMetaTag([
+                'name'=>'twitter:title',
+                'content'=>$m->name
+            ]);
+            Yii::$app->view->registerMetaTag([
+                'name'=>'twitter:description',
+                'content'=>$m->preview
+            ]);
+
+            Yii::$app->view->registerMetaTag([
+                'name'=>'twitter:site',
+                'content'=>'qushkupir.uz/site/page?code='.$code
+            ]);
+            Yii::$app->view->registerMetaTag([
+                'name'=>'twitter:image',
+                'content'=>'/uploads/'.$m->image
+            ]);
+
+            return $this->render('page',[
+                'model'=>$m,
+                'code'=>$code,
+                'name'=>$name
+            ]);
+        }else{
+            throw new NotFoundHttpException();
+        }
+
+
+    }
+
+    public function actionSitemap(){
+
+
+        return $this->render('sitemap');
+
+    }
+
+    public function actionView($code){
+        if($code == null){
+            throw new NotFoundHttpException();
+        }
+
+        if($model = News::findOne(['code'=>$code])){
+            $model->show_counter ++;
+            $model->save();
+            Yii::$app->view->registerMetaTag([
+                'name'=>'twitter:card',
+                'content'=>'summery'
+            ]);
+
+            Yii::$app->view->registerMetaTag([
+                'name'=>'twitter:title',
+                'content'=>$model->name
+            ]);
+            Yii::$app->view->registerMetaTag([
+                'name'=>'twitter:description',
+                'content'=>$model->preview,
+            ]);
+
+            Yii::$app->view->registerMetaTag([
+                'name'=>'twitter:site',
+                'content'=>'qushkupir.uz/site/view?code='.$code
+            ]);
+            Yii::$app->view->registerMetaTag([
+                'name'=>'twitter:image',
+                'content'=>'/uploads/'.$model->image
+            ]);
+            return $this->render('view',[
+                'model'=>$model,
+                'code'=>$code,
+                'name'=>short_str($model->name,75),
+            ]);
+        }else{
+            throw new NotFoundHttpException();
+        }
+
+    }
     /**
      * Logs in a user.
      *
