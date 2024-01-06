@@ -2,6 +2,7 @@
 
 namespace frontend\modules\cp\controllers;
 
+use common\models\Category;
 use common\models\Travel;
 use common\models\search\TravelSearch;
 use common\models\TravelImage;
@@ -83,6 +84,15 @@ class TravelController extends Controller
                     $model->image = 'default/default.jpg';
                 }
                 if($model->save()){
+                    $cat = $model->cat;
+                    $cnt = Travel::find()->where(['cat_id'=>$model->cat_id])->count('*');
+                    if($cnt == 0){
+                        $cat->url = "#";
+                    }elseif($cnt == 1){
+                        $cat->url = "/site/page";
+                    }else{
+                        $cat->url = "/site/news";
+                    }
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
             }
@@ -106,6 +116,7 @@ class TravelController extends Controller
     {
         $model = $this->findModel($id);
         $img = $model->image;
+        $old_cat = $model->cat;
         if ($this->request->isPost && $model->load($this->request->post())) {
             $model->modify_id = Yii::$app->user->id;
             if($model->image = UploadedFile::getInstance($model,'image')){
@@ -116,6 +127,29 @@ class TravelController extends Controller
                 $model->image = $img;
             }
             if($model->save()){
+
+                $cat = $model->cat;
+                $cnt = Travel::find()->where(['cat_id'=>$model->cat_id])->count('*');
+                if($cnt == 0){
+                    $cat->url = "#";
+                }elseif($cnt == 1){
+                    $cat->url = "/site/page";
+                }else{
+                    $cat->url = "/site/news";
+                }
+                $cat->save(false);
+
+                $cat = $old_cat;
+                $cnt = Travel::find()->where(['cat_id'=>$cat->id])->count('*');
+                if($cnt == 0){
+                    $cat->url = "#";
+                }elseif($cnt == 1){
+                    $cat->url = "/site/page";
+                }else{
+                    $cat->url = "/site/news";
+                }
+                $cat->save(false);
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
             return $this->redirect(['view', 'id' => $model->id]);
