@@ -11,7 +11,9 @@
                                 <img class="logo-light" src="/frntd/img/logo-footer.png" alt="">
                             </a>
                             <p class="lh-lg">
-                                <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad distinctio labore molestias? Aspernatur, assumenda culpa cum cupiditate dolores dolorum et, fugiat id minima mollitia necessitatibus odit provident quam rerum vitae?</em>
+                                <em>Туристическая компания , представляет уникальные решения по организации деловых поездок и путешествий по всему миру.
+                                    Мы представляем Вам индивидуальный подход. Он основан, прежде всего, на личном опыте...
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/site/view','code'=>'about-company'])?>">Подробна</a></em>
                             </p>
                         </div>
                     </div>

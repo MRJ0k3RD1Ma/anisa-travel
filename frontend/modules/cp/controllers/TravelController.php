@@ -93,6 +93,7 @@ class TravelController extends Controller
                     }else{
                         $cat->url = "/site/news";
                     }
+                    $cat->save(false);
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
             }

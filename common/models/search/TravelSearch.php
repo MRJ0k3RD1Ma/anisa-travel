@@ -40,7 +40,7 @@ class TravelSearch extends Travel
      */
     public function search($params)
     {
-        $query = Travel::find();
+        $query = Travel::find()->orderBy(['id'=>SORT_DESC]);
 
         // add conditions that should always apply here
 

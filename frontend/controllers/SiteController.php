@@ -240,10 +240,15 @@ class SiteController extends Controller
         if($code == null){
             throw new NotFoundHttpException();
         }
-
+        $lang = Yii::$app->language;
+        if($lang == 'uz'){
+            $lang = '';
+        }else{
+            $lang = '_'.$lang;
+        }
         $c = Category::findOne(['code'=>$code]);
-        $name=$c->name;
-        if($m = News::findOne(['cat_id'=>$c->id])){
+        $name=$c->{'name'.$lang};
+        if($m = Travel::findOne(['cat_id'=>$c->id])){
             Yii::$app->view->registerMetaTag([
                 'name'=>'twitter:card',
                 'content'=>'summery'
@@ -251,16 +256,16 @@ class SiteController extends Controller
 
             Yii::$app->view->registerMetaTag([
                 'name'=>'twitter:title',
-                'content'=>$m->name
+                'content'=>$m->{'name'.$lang}
             ]);
             Yii::$app->view->registerMetaTag([
                 'name'=>'twitter:description',
-                'content'=>$m->preview
+                'content'=>$m->{'short'.$lang}
             ]);
 
             Yii::$app->view->registerMetaTag([
                 'name'=>'twitter:site',
-                'content'=>'qushkupir.uz/site/page?code='.$code
+                'content'=>'anisatravel.uz/site/page?code='.$code
             ]);
             Yii::$app->view->registerMetaTag([
                 'name'=>'twitter:image',
