@@ -67,7 +67,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'short')->textarea(['rows' => 6]) ?>
 
 
-    <?= $form->field($model, 'detail')->widget(\moonland\tinymce\TinyMCE::className(), [
+
+
+    <?= $form->field($model, 'detail')->widget(\dosamigos\tinymce\TinyMce::className(), [
         'options' => ['rows' => 20],
 //        'language' => 'ru',
 
@@ -80,10 +82,9 @@ use yii\widgets\ActiveForm;
             ],
             'relative_urls'=>false,
             'image_advtab' => true,
-            'images_upload_url'=> Yii::$app->urlManager->createUrl(['/cp/photo/upload']),
+            'images_upload_url' => Yii::$app->urlManager->createUrl(['/cp/photo/upload']),
             'file_picker_types'=>'file image media',
             'file_browser_callback_types'=>'file image media',
-
             'content_css'=> [
                 '//fonts.googleapis.com/css?family=Roboto',
                 '//www.tinymce.com/css/codepen.min.css'
@@ -98,7 +99,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'short_ru')->textarea(['rows' => 6]) ?>
 
 
-    <?= $form->field($model, 'detail_ru')->widget(\moonland\tinymce\TinyMce::className(), [
+    <?= $form->field($model, 'detail_ru')->widget(\dosamigos\tinymce\TinyMce::className(), [
         'options' => ['rows' => 20],
 //        'language' => 'ru',
 
@@ -128,7 +129,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'short_en')->textarea(['rows' => 6]) ?>
 
 
-    <?= $form->field($model, 'detail_en')->widget(\moonland\tinymce\TinyMce::className(), [
+    <?= $form->field($model, 'detail_en')->widget(\dosamigos\tinymce\TinyMce::className(), [
         'options' => ['rows' => 20],
 //        'language' => 'ru',
 
