@@ -20,7 +20,8 @@
         "yiisoft/yii2-symfonymailer": "~2.0.3",
         "codemix/yii2-localeurls": "^1.8",
         "2amigos/yii2-tinymce-widget": "~1.1",
-        "2amigos/yii2-transliterator-helper": "*"
+        "2amigos/yii2-transliterator-helper": "*",
+        "moonlandsoft/yii2-tinymce": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
