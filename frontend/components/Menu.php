@@ -109,7 +109,12 @@ class Menu extends Component{
             }
             $data .= "<li>";
             if($item->type_id == 4){
-                $url = '#';
+                $c = $item->code;
+                if($c[0] == 'h' and $c[1] == 't' and $c[2] == 't' and $c[3] == 'p' and ($c[4] == 's' or $c[4] == ':') and ($c[5] == ':' or $c[5] == '/') and $c[6] == '/'){
+                    $url = $item->code;
+                }else{
+                    $url = Yii::$app->urlManager->createUrl([$item->code]);
+                }
             }else{
                 $url = Yii::$app->urlManager->createUrl([$item->url,'code'=>$item->code]);
             }
@@ -150,7 +155,12 @@ class Menu extends Component{
             }
             $data .= "<li>";
             if($item->type_id == 4){
-                $url = '#';
+                $c = $item->code;
+                if($c[0] == 'h' and $c[1] == 't' and $c[2] == 't' and $c[3] == 'p' and ($c[4] == 's' or $c[4] == ':') and ($c[5] == ':' or $c[5] == '/') and $c[6] == '/'){
+                    $url = $item->code;
+                }else{
+                    $url = Yii::$app->urlManager->createUrl([$item->code]);
+                }
             }else{
                 $url = Yii::$app->urlManager->createUrl([$item->url,'code'=>$item->code]);
             }
@@ -178,5 +188,33 @@ class Menu extends Component{
         return $data;
     }
 
+
+    public static function Breadcrumb($id,$data = null,$index = 10000)
+    {
+        $model = Category::findOne($id);
+        $lang = Yii::$app->language;
+        if($lang == 'uz'){
+            $lang = '';
+        }else{
+            $lang = '_'.$lang;
+        }
+        $name = $model->{'name'.$lang};
+        if($model->type_id == 4){
+            $c = $model->code;
+            if($c[0] == 'h' and $c[1] == 't' and $c[2] == 't' and $c[3] == 'p' and ($c[4] == 's' or $c[4] == ':') and ($c[5] == ':' or $c[5] == '/') and $c[6] == '/'){
+                $url = $model->code;
+            }else{
+                $url = Yii::$app->urlManager->createUrl([$model->code]);
+            }
+        }else{
+            $url = Yii::$app->urlManager->createUrl([$model->url,'code'=>$model->code]);
+        }
+
+        $data[$index] = "<li class='breadcrumb-item'><a href='{$url}'>{$name}</a></li>";
+        if($model->parent_id != 0 and Category::findOne($model->parent_id)){
+            return self::Breadcrumb($model->parent_id,$data,$index-1);
+        }
+        return $data;
+    }
 
 }

@@ -1,5 +1,5 @@
 <?php
-$this->title = 'Yangiliklar';
+$this->title = $name;
 $this->params['breadcrumbs'][] = $this->title;
 $lang = Yii::$app->language;
 if ($lang == 'uz') {
@@ -22,7 +22,7 @@ if ($lang == 'uz') {
                                 <div class="input-group input-group-lg where-input">
                                     <label class="input-group-text bg-transparent border-0" for="txtWhere"><i
                                                 class="ti ti-map-pin"></i></label>
-                                    <input type="text" class="form-control bg-transparent border-0 ps-0"
+                                    <input type="text" class="form-control bg-transparent border-0 ps-0" name="s"
                                            placeholder="Search: Type key words" id="txtWhere">
                                 </div>
                                 <!-- /Where -->
@@ -47,14 +47,19 @@ if ($lang == 'uz') {
 <!-- /CHECK TOUR -->
 
 
+
 <section id="title" class="pt-4">
     <div class="container">
         <div class="page-title mb-4">
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Главная</a></li>
-                    <li class="breadcrumb-item"><a href="#">Новости</a></li>
+                    <li class="breadcrumb-item"><a href="<?= Yii::$app->urlManager->createUrl(['/'])?>">Главная</a></li>
+                    <?php if(isset($category)){?>
+                    <?php foreach (\frontend\components\Menu::Breadcrumb($category->id) as $item):?>
+                        <?= $item?>
+                    <?php endforeach;?>
+                    <?php }?>
                     <li class="breadcrumb-item active" aria-current="page"><?= $name ?></li>
                 </ol>
             </nav>

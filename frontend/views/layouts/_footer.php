@@ -87,24 +87,11 @@
                 <div class="col-12 col-xl-3 col-lg-4 col-md-6">
                     <!-- Get app & Social -->
                     <div class="footer-widget mb-4">
-                        <h5 class="widget-title mb-4 text-white fw-bold-1">Cоциальная сеть</h5>
-                        <div class="get-app-box">
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <figure>
-                                            <img loading="lazy" src="/frntd/img/s4.svg" class="img-fluid" alt="">
-                                        </figure>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <figure>
-                                            <img loading="lazy" src="/frntd/img/s5.svg" class="img-fluid" alt="">
-                                        </figure>
-                                    </a>
-                                </li>
-                            </ul>
+                        <h5 class="widget-title mb-4 text-white fw-bold-1">Курсы валют</h5>
+                        <div class="contact-box">
+
+                            <?= $this->render('_kurs')?>
+
                         </div>
                         <div class="footer-social">
                             <h5 class="widget-title social-title mb-4 text-white fw-bold-1">Подключайтесь к социальным сетям</h5>

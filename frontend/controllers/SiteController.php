@@ -91,7 +91,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index',['name'=>'Главная | Anisatravel.uz']);
     }
 
 
@@ -112,8 +112,14 @@ class SiteController extends Controller
                     ->andFilterWhere([
                         'or',
                         ['like', 'name', $s],
-                        ['like', 'preview', $s],
+                        ['like', 'short', $s],
                         ['like', 'detail', $s],
+                        ['like', 'name_en', $s],
+                        ['like', 'short_en', $s],
+                        ['like', 'detail_en', $s],
+                        ['like', 'name_ru', $s],
+                        ['like', 'short_ru', $s],
+                        ['like', 'detail_ru', $s],
                     ]);
                 ;
             }
@@ -155,7 +161,6 @@ class SiteController extends Controller
     }
 
     public function actionNews($code = null){
-
 
 
         if($code == null){
@@ -228,6 +233,7 @@ class SiteController extends Controller
             'pages' => $pages,
             'code'=>$code,
             'name'=>$name,
+            'category'=>Category::findOne($cat_id)
         ]);
     }
     public function actionPage($code = null){
@@ -258,7 +264,7 @@ class SiteController extends Controller
             ]);
             Yii::$app->view->registerMetaTag([
                 'name'=>'twitter:image',
-                'content'=>'/uploads/'.$m->image
+                'content'=>'/upload/'.$m->image
             ]);
 
             return $this->render('page',[
@@ -284,10 +290,15 @@ class SiteController extends Controller
         if($code == null){
             throw new NotFoundHttpException();
         }
-
-        if($model = News::findOne(['code'=>$code])){
-            $model->show_counter ++;
-            $model->save();
+        $lang = Yii::$app->language;
+        if($lang == 'uz'){
+            $lang = '';
+        }else{
+            $lang = '_'.$lang;
+        }
+        if($model = Travel::findOne(['code'=>$code])){
+//            $model->show_counter ++;
+//            $model->save();
             Yii::$app->view->registerMetaTag([
                 'name'=>'twitter:card',
                 'content'=>'summery'
@@ -295,25 +306,25 @@ class SiteController extends Controller
 
             Yii::$app->view->registerMetaTag([
                 'name'=>'twitter:title',
-                'content'=>$model->name
+                'content'=>$model->{'name'.$lang}
             ]);
             Yii::$app->view->registerMetaTag([
                 'name'=>'twitter:description',
-                'content'=>$model->preview,
+                'content'=>$model->{'short'.$lang},
             ]);
 
             Yii::$app->view->registerMetaTag([
                 'name'=>'twitter:site',
-                'content'=>'qushkupir.uz/site/view?code='.$code
+                'content'=>'anisatravel.uz/site/view?code='.$code
             ]);
             Yii::$app->view->registerMetaTag([
                 'name'=>'twitter:image',
-                'content'=>'/uploads/'.$model->image
+                'content'=>'/upload/'.$model->image
             ]);
             return $this->render('view',[
                 'model'=>$model,
                 'code'=>$code,
-                'name'=>short_str($model->name,75),
+                'name'=>$model->{'name'.$lang},
             ]);
         }else{
             throw new NotFoundHttpException();

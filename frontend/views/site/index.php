@@ -1,4 +1,12 @@
-
+<?php
+$this->title = $name;
+$lang = Yii::$app->language;
+if($lang == 'uz'){
+    $lang = '';
+}else{
+    $lang = '_'.$lang;
+}
+?>
 
 <!-- HERO -->
 <section id="hero" class="hero hero-fullscreen section-mb-80">
@@ -42,7 +50,7 @@
                                     <!-- Where -->
                                     <div class="input-group input-group-lg where-input">
                                         <label class="input-group-text bg-transparent border-0" for="txtWhere"><i class="ti ti-search"></i></label>
-                                        <input type="text" class="form-control bg-transparent border-0 ps-0" placeholder="Search: Type key words" id="txtWhere">
+                                        <input type="text" class="form-control bg-transparent border-0 ps-0" name="s" placeholder="Search: Type key words" id="txtWhere">
                                     </div>
                                 </div>
 
@@ -73,8 +81,8 @@
     <div class="container">
         <!-- Heading -->
         <div class="heading">
-            <h2 class="title">Top Europe Tours</h2>
-            <p>Attractive tours are chosen by many tourists</p>
+            <h2 class="title">Новые туры</h2>
+            <p>Привлекательные туры выбирают многие туристы</p>
         </div>
         <!-- /Heading -->
         <!-- Tour list -->
@@ -82,305 +90,45 @@
             <div class="swiper tour-swiper">
                 <!-- Tour list -->
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    <?php foreach (\common\models\Travel::find()->where('cat_id in (select id from category where type_id = 1)')->orderBy(['id'=>SORT_DESC])->limit(6)->all() as $item):?>
+
+                        <div class="swiper-slide">
                         <!-- Tour item -->
                         <div class="card tour-item border-0">
                             <div class="card-body p-0">
                                 <div class="tour-image">
-                                    <a href="single-tour.html" class="d-block">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/site/view','code'=>$item->code])?>" class="d-block">
                                         <figure class="rounded-3 overflow-hidden position-relative">
-                                            <img loading="lazy" src="/frntd/img/t22.jpg" class="img-fluid" alt="">
-                                            <figcaption>Museums & Exhibitions</figcaption>
+                                            <img loading="lazy" src="/upload/<?= $item->image?>" class="img-fluid" alt="">
+                                            <figcaption><?= $item->{'name'.$lang}?></figcaption>
                                         </figure>
                                     </a>
-                                    <span class="tour-sticker">Popular</span>
-                                    <a href="javascript:;" class="tour-like"><i class="ti ti-heart"></i></a>
                                 </div>
                                 <div class="tour-content p-3">
                                     <div class="tour-duration-location">
-                                        <span>1 day</span> -
-                                        <a href="city.html">Paris</a>
+                                        <span><?= $item->days?> - День</span>
                                     </div>
                                     <h3 class="tour-title">
-                                        <a href="single-tour.html">Louvre Museum Guided Tour with Skip the Line Entrance</a>
+                                        <a href="<?= Yii::$app->urlManager->createUrl(['/site/view','code'=>$item->code])?>"><?= $item->{'name'.$lang}?></a>
                                     </h3>
-                                    <div class="tour-review">
-                                        <div class="tour-star-rate">
-                                            <span class="star-rate-view size-16"><span class="star-value rate-45"></span></span>
-                                        </div>
-                                        <span class="tour-review-number"><span>(4,635 reviews)</span></span>
-                                    </div>
                                     <div class="tour-price">
                                         <div class="new-price text-danger">
-                                            <span>From:</span>
-                                            <strong><sup>$</sup>85.80</strong>
+                                            <span>От:</span>
+                                            <strong><sup>$</sup><?= $item->price?></strong>
                                         </div>
+                                        <?php if($item->price < $item->old_price){?>
                                         <div class="old-price">
-                                            <del class="ms-2 text-muted"><sup>$</sup>99.80</del>
+                                            <del class="ms-2 text-muted"><sup>$</sup><?= $item->old_price ?></del>
                                         </div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- /Tour item -->
                     </div>
-                    <div class="swiper-slide">
-                        <!-- Tour item -->
-                        <div class="card tour-item border-0">
-                            <div class="card-body p-0">
-                                <div class="tour-image">
-                                    <a href="single-tour.html" class="d-block">
-                                        <figure class="rounded-3 overflow-hidden position-relative">
-                                            <img loading="lazy" src="/frntd/img/t23.jpg" class="img-fluid" alt="">
-                                            <figcaption>Explorer &amp; Adventure</figcaption>
-                                        </figure>
-                                    </a>
-                                    <span class="tour-sticker bg-danger">Promotion</span>
-                                    <a href="javascript:;" class="tour-like"><i class="ti ti-heart"></i></a>
-                                </div>
-                                <div class="tour-content p-3">
-                                    <div class="tour-duration-location">
-                                        <span>1 day</span> -
-                                        <a href="city.html">Venice</a>
-                                    </div>
-                                    <h3 class="tour-title">
-                                        <a href="single-tour.html">Grand Canal Gondola Ride with App Commentary</a>
-                                    </h3>
-                                    <div class="tour-review">
-                                        <div class="tour-star-rate">
-                                            <span class="star-rate-view size-16"><span class="star-value rate-45"></span></span>
-                                        </div>
-                                        <span class="tour-review-number"><span>(1,335 reviews)</span></span>
-                                    </div>
-                                    <div class="tour-price">
-                                        <div class="new-price text-danger">
-                                            <span>From:</span>
-                                            <strong><sup>$</sup>95.80</strong>
-                                        </div>
-                                        <div class="old-price">
-                                            <del class="ms-2 text-muted"><sup>$</sup>110.80</del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Tour item -->
-                    </div>
-                    <div class="swiper-slide">
-                        <!-- Tour item -->
-                        <div class="card tour-item border-0">
-                            <div class="card-body p-0">
-                                <div class="tour-image">
-                                    <a href="single-tour.html" class="d-block">
-                                        <figure class="rounded-3 overflow-hidden position-relative">
-                                            <img loading="lazy" src="/frntd/img/t24.jpg" class="img-fluid" alt="">
-                                            <figcaption>Cultural & Foods</figcaption>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="tour-content p-3">
-                                    <div class="tour-duration-location">
-                                        <span>1 day</span> -
-                                        <a href="city.html">London</a>
-                                    </div>
-                                    <h3 class="tour-title">
-                                        <a href="single-tour.html">
-                                            Full-Day Windsor, Stonehenge, and Oxford Tour
-                                        </a>
-                                    </h3>
-                                    <div class="tour-review">
-                                        <div class="tour-star-rate">
-                                            <span class="star-rate-view size-16"><span class="star-value rate-45"></span></span>
-                                        </div>
-                                        <span class="tour-review-number"><span>(3,135 reviews)</span></span>
-                                    </div>
-                                    <div class="tour-price">
-                                        <div class="new-price text-danger">
-                                            <span>From:</span>
-                                            <strong><sup>$</sup>65.80</strong>
-                                        </div>
-                                        <div class="old-price">
-                                            <del class="ms-2 text-muted"><sup>$</sup>79.80</del>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="javascript:;" class="tour-like"><i class="ti ti-heart"></i></a>
-                            </div>
-                        </div>
-                        <!-- /Tour item -->
-                    </div>
-                    <div class="swiper-slide">
-                        <!-- Tour item -->
-                        <div class="card tour-item border-0">
-                            <div class="card-body p-0">
-                                <div class="tour-image">
-                                    <a href="single-tour.html" class="d-block">
-                                        <figure class="rounded-3 overflow-hidden position-relative">
-                                            <img loading="lazy" src="/frntd/img/t25.jpg" class="img-fluid" alt="">
-                                            <figcaption>Explorer &amp; Adventure</figcaption>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="tour-content p-3">
-                                    <div class="tour-duration-location">
-                                        <span>1 day</span> -
-                                        <a href="city.html">Vatican</a>
-                                    </div>
-                                    <h3 class="tour-title">
-                                        <a href="single-tour.html">
-                                            Museums & Sistine Chapel Entrance Ticket
-                                        </a>
-                                    </h3>
-                                    <div class="tour-review">
-                                        <div class="tour-star-rate">
-                                            <span class="star-rate-view size-16"><span class="star-value rate-45"></span></span>
-                                        </div>
-                                        <span class="tour-review-number"><span>(2,621 reviews)</span></span>
-                                    </div>
-                                    <div class="tour-price">
-                                        <div class="new-price text-danger">
-                                            <span>From:</span>
-                                            <strong><sup>$</sup>55.80</strong>
-                                        </div>
-                                        <div class="old-price">
-                                            <del class="ms-2 text-muted"><sup>$</sup>69.80</del>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="tour-sticker">Popular</span>
-                                <a href="javascript:;" class="tour-like"><i class="ti ti-heart"></i></a>
-                            </div>
-                        </div>
-                        <!-- /Tour item -->
-                    </div>
-                    <div class="swiper-slide">
-                        <!-- Tour item -->
-                        <div class="card tour-item border-0">
-                            <div class="card-body p-0">
-                                <div class="tour-image">
-                                    <a href="single-tour.html" class="d-block">
-                                        <figure class="rounded-3 overflow-hidden position-relative">
-                                            <img loading="lazy" src="/frntd/img/t26.jpg" class="img-fluid" alt="">
-                                            <figcaption>Hiking & Trekking</figcaption>
-                                        </figure>
-                                    </a>
-                                </div>
-                                <div class="tour-content p-3">
-                                    <div class="tour-duration-location">
-                                        <span>1 day</span> -
-                                        <a href="city.html">Nice</a>
-                                    </div>
-                                    <h3 class="tour-title">
-                                        <a href="single-tour.html">Old Town Treasures and Castle Hill Walking Tour</a>
-                                    </h3>
-                                    <div class="tour-review">
-                                        <div class="tour-star-rate">
-                                            <span class="star-rate-view size-16"><span class="star-value rate-45"></span></span>
-                                        </div>
-                                        <span class="tour-review-number"><span>(1,325 reviews)</span></span>
-                                    </div>
-                                    <div class="tour-price">
-                                        <div class="new-price text-danger">
-                                            <span>From:</span>
-                                            <strong><sup>$</sup>68.80</strong>
-                                        </div>
-                                        <div class="old-price">
-                                            <del class="ms-2 text-muted"><sup>$</sup>79.80</del>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="javascript:;" class="tour-like"><i class="ti ti-heart"></i></a>
-                            </div>
-                        </div>
-                        <!-- /Tour item -->
-                    </div>
-                    <div class="swiper-slide">
-                        <!-- Tour item -->
-                        <div class="card tour-item border-0">
-                            <div class="card-body p-0">
-                                <div class="tour-image">
-                                    <a href="single-tour.html" class="d-block">
-                                        <figure class="rounded-3 overflow-hidden position-relative">
-                                            <img loading="lazy" src="/frntd/img/t27.jpg" class="img-fluid" alt="">
-                                            <figcaption>Cultural & Foods</figcaption>
-                                        </figure>
-                                    </a>
-                                    <span class="tour-sticker bg-success">Bestseller</span>
-                                    <a href="javascript:;" class="tour-like"><i class="ti ti-heart"></i></a>
-                                </div>
-                                <div class="tour-content p-3">
-                                    <div class="tour-duration-location">
-                                        <span>1 day</span> -
-                                        <a href="city.html">Florence</a>
-                                    </div>
-                                    <h3 class="tour-title">
-                                        <a href="single-tour.html">
-                                            Dome Climb, Museum and Baptistry Small-Group Tour
-                                        </a>
-                                    </h3>
-                                    <div class="tour-review">
-                                        <div class="tour-star-rate">
-                                            <span class="star-rate-view size-16"><span class="star-value rate-45"></span></span>
-                                        </div>
-                                        <span class="tour-review-number"><span>(3,111 reviews)</span></span>
-                                    </div>
-                                    <div class="tour-price">
-                                        <div class="new-price text-danger">
-                                            <span>From:</span>
-                                            <strong><sup>$</sup>75.80</strong>
-                                        </div>
-                                        <div class="old-price">
-                                            <del class="ms-2 text-muted"><sup>$</sup>89.80</del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Tour item -->
-                    </div>
-                    <div class="swiper-slide">
-                        <!-- Tour item -->
-                        <div class="card tour-item border-0">
-                            <div class="card-body p-0">
-                                <div class="tour-image">
-                                    <a href="single-tour.html" class="d-block">
-                                        <figure class="rounded-3 overflow-hidden position-relative">
-                                            <img loading="lazy" src="/frntd/img/t28.jpg" class="img-fluid" alt="">
-                                            <figcaption>Cultural & Foods</figcaption>
-                                        </figure>
-                                    </a>
-                                    <a href="javascript:;" class="tour-like"><i class="ti ti-heart"></i></a>
-                                </div>
-                                <div class="tour-content p-3">
-                                    <div class="tour-duration-location">
-                                        <span>1 day</span> -
-                                        <a href="city.html">Amsterdam</a>
-                                    </div>
-                                    <h3 class="tour-title">
-                                        <a href="single-tour.html">
-                                            Zaanse Schans, Edam, Volendam & Marken Bus Tour
-                                        </a>
-                                    </h3>
-                                    <div class="tour-review">
-                                        <div class="tour-star-rate">
-                                            <span class="star-rate-view size-16"><span class="star-value rate-45"></span></span>
-                                        </div>
-                                        <span class="tour-review-number"><span>(1,121 reviews)</span></span>
-                                    </div>
-                                    <div class="tour-price">
-                                        <div class="new-price text-danger">
-                                            <span>From:</span>
-                                            <strong><sup>$</sup>85.80</strong>
-                                        </div>
-                                        <div class="old-price">
-                                            <del class="ms-2 text-muted"><sup>$</sup>99.80</del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Tour item -->
-                    </div>
+
+                    <?php endforeach ?>
                 </div>
                 <!-- /Post list -->
                 <!-- Dots -->
@@ -541,374 +289,46 @@
 </section>
 <!-- /ADVENTRURE -->
 
-<!-- CITIES -->
-<section id="cities" class="section-mb-80">
-    <div class="container">
-        <!-- Heading -->
-        <div class="heading">
-            <h2 class="title">Attractive European cities</h2>
-            <p>Europe tours are chosen by many tourists</p>
-        </div>
-        <!-- /Heading -->
-        <div class="popular-city">
-            <ul class="list-unstyled fs-6 fw-bold-1 mb-0">
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">15</span>
-                        <span class="input-group-text bg-white">Rome</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">48</span>
-                        <span class="input-group-text bg-white">Barcelona</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">35</span>
-                        <span class="input-group-text bg-white">Paris</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">32</span>
-                        <span class="input-group-text bg-white">Istanbul</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">36</span>
-                        <span class="input-group-text bg-white">Venice</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">14</span>
-                        <span class="input-group-text bg-white">Monaco</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">29</span>
-                        <span class="input-group-text bg-white">Florence</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">44</span>
-                        <span class="input-group-text bg-white">Budapest</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">28</span>
-                        <span class="input-group-text bg-white">Prague</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">32</span>
-                        <span class="input-group-text bg-white">United Kingdom</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">72</span>
-                        <span class="input-group-text bg-white">Madrid</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">81</span>
-                        <span class="input-group-text bg-white">London</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">31</span>
-                        <span class="input-group-text bg-white">Lisbon</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">62</span>
-                        <span class="input-group-text bg-white">Munich</span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">37</span>
-                        <span class="input-group-text bg-white">Verona </span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">19</span>
-                        <span class="input-group-text bg-white">Vienna </span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">44</span>
-                        <span class="input-group-text bg-white">Salzburg </span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">27</span>
-                        <span class="input-group-text bg-white">Granada </span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">54</span>
-                        <span class="input-group-text bg-white">Athens </span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">71</span>
-                        <span class="input-group-text bg-white">Berlin </span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">42</span>
-                        <span class="input-group-text bg-white">Porto </span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">45</span>
-                        <span class="input-group-text bg-white">Amsterdam </span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">23</span>
-                        <span class="input-group-text bg-white">Fira </span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">57</span>
-                        <span class="input-group-text bg-white">San Sebastian </span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">21</span>
-                        <span class="input-group-text bg-white">Valencia </span>
-                    </a>
-                </li>
-                <li class="list-inline-item me-1 mb-2">
-                    <a href="city.html" class="input-group">
-                        <span class="input-group-text bg-white">28</span>
-                        <span class="input-group-text bg-white">Dublin </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
-<!-- /CITIES -->
-
 
 <!-- INFO-->
 <section id="info" class="section-mb-80">
     <div class="container">
         <!-- Heading -->
         <div class="heading">
-            <h2 class="title">Useful information</h2>
-            <p>Things to know when traveling to Europe</p>
+            <h2 class="title">Полезная информация</h2>
+            <p>Узнайте необходимую информацию, которая вам понадобится в поездке</p>
         </div>
         <!-- /Heading -->
         <!-- Blog mini -->
         <div class="blog-mini">
             <div class="row">
-                <div class="col-12 col-xl-4 col-lg-6 col-md-12">
+                <?php foreach (\common\models\Travel::find()->where('cat_id in (select id from category where type_id = 2)')->orderBy(['id'=>SORT_DESC])->limit(9)->all() as $item):?>
+
+                    <div class="col-12 col-xl-4 col-lg-6 col-md-12">
                     <!-- Post -->
-                    <a href="single-post.html" class="d-flex align-items-center blog-post mb-4">
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/site/view','code'=>$item->code])?>" class="d-flex align-items-center blog-post mb-4">
                         <div class="flex-shrink-0 post-image overflow-hidden rounded-3">
                             <figure>
-                                <img loading="lazy" src="/frntd/img/b7.jpg" class="img-fluid" alt="">
+                                <img loading="lazy" src="/upload/<?= $item->image?>" class="img-fluid" alt="">
                             </figure>
                         </div>
                         <div class="post-content flex-grow-1 p-3">
                             <h3 class="post-title">
-                                Best Places to Stay Overlooking the Eiffel Tower of Paris
+                                <?= $item->{'name'.$lang}?>
                             </h3>
                             <div class="post-date">
-                                <span>Jan 20 2022</span>
+                                <span><?= date('d.m.Y',strtotime($item->created))?></span>
                             </div>
                         </div>
                     </a>
                     <!-- /Post -->
                 </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-12">
-                    <!-- Post -->
-                    <a href="single-post.html" class="d-flex align-items-center blog-post mb-4">
-                        <div class="flex-shrink-0 post-image overflow-hidden rounded-3">
-                            <figure>
-                                <img loading="lazy" src="/frntd/img/b9.jpg" class="img-fluid" alt="">
-                            </figure>
-                        </div>
-                        <div class="post-content flex-grow-1 p-3">
-                            <h3 class="post-title">
-                                What are The Most Famous Bridges in France?
-                            </h3>
-                            <div class="post-date">
-                                <span>Jan 20 2022</span>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- /Post -->
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-12">
-                    <!-- Post -->
-                    <a href="single-post.html" class="d-flex align-items-center blog-post mb-4">
-                        <div class="flex-shrink-0 post-image overflow-hidden rounded-3">
-                            <figure>
-                                <img loading="lazy" src="/frntd/img/b8.jpg" class="img-fluid" alt="">
-                            </figure>
-                        </div>
-                        <div class="post-content flex-grow-1 p-3">
-                            <h3 class="post-title">
-                                The Best 11 Free Tours in Paris in English and for FREE!
-                            </h3>
-                            <div class="post-date">
-                                <span>Jan 20 2022</span>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- /Post -->
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-12">
-                    <!-- Post -->
-                    <a href="single-post.html" class="d-flex align-items-center blog-post mb-4">
-                        <div class="flex-shrink-0 post-image overflow-hidden rounded-3">
-                            <figure>
-                                <img loading="lazy" src="/frntd/img/b10.jpg" class="img-fluid" alt="">
-                            </figure>
-                        </div>
-                        <div class="post-content flex-grow-1 p-3">
-                            <h3 class="post-title">
-                                All you need to know about the champagne in France!
-                            </h3>
-                            <div class="post-date">
-                                <span>Jan 20 2022</span>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- /Post -->
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-12">
-                    <!-- Post -->
-                    <a href="single-post.html" class="d-flex align-items-center blog-post mb-4">
-                        <div class="flex-shrink-0 post-image overflow-hidden rounded-3">
-                            <figure>
-                                <img loading="lazy" src="/frntd/img/b11.jpg" class="img-fluid" alt="">
-                            </figure>
-                        </div>
-                        <div class="post-content flex-grow-1 p-3">
-                            <h3 class="post-title">
-                                all about this beautiful flower village in the south of France!
-                            </h3>
-                            <div class="post-date">
-                                <span>Jan 20 2022</span>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- Post -->
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-12">
-                    <!-- Post -->
-                    <a href="single-post.html" class="d-flex align-items-center blog-post mb-4">
-                        <div class="flex-shrink-0 post-image overflow-hidden rounded-3">
-                            <figure>
-                                <img loading="lazy" src="/frntd/img/b12.jpg" class="img-fluid" alt="">
-                            </figure>
-                        </div>
-                        <div class="post-content flex-grow-1 p-3">
-                            <h3 class="post-title">
-                                Lyon to Marseille - The Perfect South of France Itinerary
-                            </h3>
-                            <div class="post-date">
-                                <span>Jan 20 2022</span>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- /Post -->
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-12">
-                    <!-- Post -->
-                    <a href="single-post.html" class="d-flex align-items-center blog-post mb-4">
-                        <div class="flex-shrink-0 post-image overflow-hidden rounded-3">
-                            <figure>
-                                <img loading="lazy" src="/frntd/img/b16.jpg" class="img-fluid" alt="">
-                            </figure>
-                        </div>
-                        <div class="post-content flex-grow-1 p-3">
-                            <h3 class="post-title">
-                                7 Best Panoramic Views of the Paris Skyline
-                            </h3>
-                            <div class="post-date">
-                                <span>Jan 20 2022</span>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- /Post -->
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-12">
-                    <!-- Post -->
-                    <a href="single-post.html" class="d-flex align-items-center blog-post mb-4">
-                        <div class="flex-shrink-0 post-image overflow-hidden rounded-3">
-                            <figure>
-                                <img loading="lazy" src="/frntd/img/b15.jpg" class="img-fluid" alt="">
-                            </figure>
-                        </div>
-                        <div class="post-content flex-grow-1 p-3">
-                            <h3 class="post-title">
-                                The Complete Guide to Parisian Lifestyle
-                            </h3>
-                            <div class="post-date">
-                                <span>Jan 20 2022</span>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- /Post -->
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6 col-md-12">
-                    <!-- Post -->
-                    <a href="single-post.html" class="d-flex align-items-center blog-post mb-4">
-                        <div class="flex-shrink-0 post-image overflow-hidden rounded-3">
-                            <figure>
-                                <img loading="lazy" src="/frntd/img/b14.jpg" class="img-fluid" alt="">
-                            </figure>
-                        </div>
-                        <div class="post-content flex-grow-1 p-3">
-                            <h3 class="post-title">
-                                10 Best Free Things To Do in Paris, Nice, Lion
-                            </h3>
-                            <div class="post-date">
-                                <span>Jan 20 2022</span>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- Post -->
-                </div>
+
+                <?php endforeach;?>
             </div>
         </div>
         <!-- /Blog mini -->
-        <!-- Button -->
-        <div class="mt-2">
-            <a href="#" class="fw-bold-1">
-                <i class="ti ti-reload"></i>
-                <span>Load more</span>
-            </a>
-        </div>
-        <!-- /Button -->
+
     </div>
 </section>
 <!-- /INFO-->
