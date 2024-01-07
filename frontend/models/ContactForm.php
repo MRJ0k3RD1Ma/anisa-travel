@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use common\models\Contact;
 use Yii;
 use yii\base\Model;
 
@@ -38,7 +39,11 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'verifyCode' => 'Проверочный код',
+            'name'=>'Имя',
+            'email'=>'Эл-почта',
+            'subject'=>'Тема',
+            'body'=>'Подробна',
         ];
     }
 
@@ -48,14 +53,18 @@ class ContactForm extends Model
      * @param string $email the target email address
      * @return bool whether the email was sent
      */
-    public function sendEmail($email)
+    public function sendEmail()
     {
-        return Yii::$app->mailer->compose()
-            ->setTo($email)
-            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
-            ->setReplyTo([$this->email => $this->name])
-            ->setSubject($this->subject)
-            ->setTextBody($this->body)
-            ->send();
+        $model = new Contact();
+        $model->email = $this->email;
+        $model->name = $this->name;
+        $model->subject = $this->subject;
+        $model->body = $this->body;
+        if($model->save()){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }

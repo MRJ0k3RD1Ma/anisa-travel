@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\Category;
+use common\models\Order;
 use common\models\Travel;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -272,7 +273,7 @@ class SiteController extends Controller
                 'content'=>'/upload/'.$m->image
             ]);
 
-            return $this->render('page',[
+            return $this->render('view',[
                 'model'=>$m,
                 'code'=>$code,
                 'name'=>$name
@@ -281,6 +282,27 @@ class SiteController extends Controller
             throw new NotFoundHttpException();
         }
 
+
+    }
+
+
+    public function actionBook($code)
+    {
+        if($travel = Travel::findOne(['code'=>$code])){
+            $model = new Order();
+            $model->travel_id = $travel->id;
+            if($model->load($this->request->post())){
+                $model->date = date('Y-m-d',strtotime($model->date));
+                if($model->save()){
+                    Yii::$app->session->setFlash('success','Поздравляем с бронированием! Наши сотрудники свяжутся с вами в ближайшее время.');
+                }else{
+                    Yii::$app->session->setFlash('error','Произошла ошибка бронирования, поскольку введенной информации было недостаточно. Пожалуйста, попробуйте еще раз.');
+                }
+            }
+            return $this->redirect(['/site/view','code'=>$code]);
+        }else{
+            throw new NotFoundHttpException();
+        }
 
     }
 
@@ -380,10 +402,10 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+            if ($model->sendEmail()) {
+                Yii::$app->session->setFlash('success', 'Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.');
             } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+                Yii::$app->session->setFlash('error', 'При отправке вашего сообщения произошла ошибка.');
             }
 
             return $this->refresh();

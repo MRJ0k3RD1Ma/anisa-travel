@@ -72,6 +72,15 @@ if ($lang == 'uz') {
 <section id="tour" class="section-mb-80">
     <div class="container">
         <div class="tour-detail">
+            <?php if(Yii::$app->session->hasFlash('success')){?>
+                <div class="alert alert-success" role="alert">
+                    <?= Yii::$app->session->getFlash('success')?>
+                </div>
+            <?php } if(Yii::$app->session->hasFlash('error')){?>
+                <div class="alert alert-error" role="alert">
+                    <?= Yii::$app->session->getFlash('success')?>
+                </div>
+            <?php }?>
             <!-- Tour Photo -->
             <?php if($model->cat->type_id == 1): ?>
             <div class="tour-gallery position-relative mb-5">
@@ -202,19 +211,19 @@ if ($lang == 'uz') {
                                                 <div class="col-12 col-xl-12 col-md-6">
                                                     <div class="control-icon control-icon-lg mb-4">
                                                         <label class="ti ti-user"></label>
-                                                        <input type="text" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="Имя">
+                                                        <input type="text" name="Order[name]" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="Имя">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-xl-12 col-md-6">
                                                     <div class="control-icon control-icon-lg mb-4">
                                                         <label class="ti ti-phone"></label>
-                                                        <input type="text" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="Телефон">
+                                                        <input type="text" name="Order[phone]" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="Телефон">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-xl-12 col-md-6">
                                                     <div class="control-icon control-icon-lg select-date mb-4">
                                                         <label class="ti ti-calendar-event"></label>
-                                                        <input type="text" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="Дата отбытия" id="txtCheckDate" data-input readonly="readonly">
+                                                        <input type="text" name="Order[date]" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="Дата отбытия" id="txtCheckDate" data-input readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-xl-12 col-md-6">
@@ -223,7 +232,7 @@ if ($lang == 'uz') {
                                                             <label for="txtCheckAdults" class="form-label">Взрослые</label>
                                                             <div class="input-group input-group-lg shadow-sm">
                                                                 <button class="btn btn-outline-light" type="button" data-minus-adults=""><i class="ti ti-minus"></i></button>
-                                                                <input type="text" class="form-control text-center" placeholder="Взрослые" value="1" aria-label="Adults" id="txtCheckAdults" data-input-adults="">
+                                                                <input type="text" class="form-control text-center" name="Order[adults]" placeholder="Взрослые" value="1" aria-label="Adults" id="txtCheckAdults" data-input-adults="">
                                                                 <button class="btn btn-outline-light" type="button" data-plus-adults=""><i class="ti ti-plus"></i></button>
                                                             </div>
                                                         </div>
@@ -231,7 +240,7 @@ if ($lang == 'uz') {
                                                             <label for="txtCheckChildren" class="form-label">Дети</label>
                                                             <div class="input-group input-group-lg shadow-sm">
                                                                 <button class="btn btn-outline-light" type="button" data-minus-children=""><i class="ti ti-minus"></i></button>
-                                                                <input type="text" class="form-control text-center" placeholder="Дети" value="0" aria-label="Children" id="txtCheckChildren"  data-input-children="">
+                                                                <input type="text" class="form-control text-center" name="Order[child]" placeholder="Дети" value="0" aria-label="Children" id="txtCheckChildren"  data-input-children="">
                                                                 <button class="btn btn-outline-light" type="button" data-plus-children=""><i class="ti ti-plus"></i></button>
                                                             </div>
                                                         </div>
@@ -239,7 +248,7 @@ if ($lang == 'uz') {
                                                 </div>
                                                 <div class="col-12 col-xl-12 col-md-6">
                                                     <div class="mb-4 mb-md-0 mb-lg-0 mb-xl-4">
-                                                        <button class="btn btn-lg btn-primary w-100">Бронирование</button>
+                                                        <button class="btn btn-lg btn-primary w-100" type="submit">Бронирование</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-xl-12 col-md-6">
