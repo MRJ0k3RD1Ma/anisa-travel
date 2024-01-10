@@ -305,3 +305,10 @@ if ($lang == 'uz') {
     </div>
 </section>
 <!-- /TOURS -->
+
+<style>
+    .tour-detail img{
+        max-width: 100% !important;
+        height: auto;
+    }
+</style>

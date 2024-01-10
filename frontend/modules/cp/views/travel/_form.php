@@ -75,14 +75,14 @@ use yii\widgets\ActiveForm;
 
         'clientOptions' => [
             'plugins' => [
-                'image code codesample',
+                'image',
                 "advlist autolink lists link charmap print preview anchor",
                 "searchreplace visualblocks code fullscreen",
-                "insertdatetime media table contextmenu paste ",
+                "insertdatetime media table contextmenu paste advcode",
             ],
             'relative_urls'=>false,
             'image_advtab' => true,
-            'images_upload_url' => Yii::$app->urlManager->createUrl(['/cp/photo/upload']),
+            'images_upload_url'=> Yii::$app->urlManager->createUrl(['/cp/photo/upload']),
             'file_picker_types'=>'file image media',
             'file_browser_callback_types'=>'file image media',
             'content_css'=> [

@@ -13,7 +13,7 @@
                             <p class="lh-lg">
                                 <em>Туристическая компания , представляет уникальные решения по организации деловых поездок и путешествий по всему миру.
                                     Мы представляем Вам индивидуальный подход. Он основан, прежде всего, на личном опыте...
-                                    <a href="<?= Yii::$app->urlManager->createUrl(['/site/view','code'=>'about-company'])?>">Подробна</a></em>
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/site/page','code'=>'about-company'])?>"><?= Yii::t('app','Подробна')?></a></em>
                             </p>
                         </div>
                     </div>

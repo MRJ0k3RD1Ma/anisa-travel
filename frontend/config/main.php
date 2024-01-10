@@ -31,7 +31,7 @@ return [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
         ],
-        'log' => [
+        /*'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
@@ -39,11 +39,24 @@ return [
                     'levels' => ['error', 'warning'],
                 ],
             ],
-        ],
+        ],*/
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\DbMessageSource',
+                    //'basePath' => '@app/messages',
+                    'sourceLanguage' => 'ru',
+                    'enableCaching' => true,
+                    'cachingDuration' => 10,
+                    'forceTranslation'=>true,
+                    'on missingTranslation' => ['common\components\TranslationEventHandler', 'handleMissingTranslation']
+                ],
+            ],
+        ],
+        'sourceLanguage'=>'ru',
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -52,7 +65,7 @@ return [
             'enableDefaultLanguageUrlCode' => true,
             // List all supported languages here
             // Make sure, you include your app's default language.
-            'languages' => ['ru',],
+            'languages' => ['ru','en','uz'],
             'on languageChanged' => '\frontend\components\Lang::onLanguageChanged',
             'rules' => [
             ],
