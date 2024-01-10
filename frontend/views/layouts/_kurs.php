@@ -33,18 +33,19 @@ $content = curl_exec($ch);
 curl_close($ch);
 
 $content = json_decode($content, true);
+if($content) {
 
-$res = [];
-$text = [840=>'USD',978=>'EUR',643=>'RUB'];
-$kurs = explode(',',$get);
-foreach ($content as $key=>$item){
-    foreach ($kurs as $i){
-        if($item['Code'] == $i){
-            $t = $text[$i];
-            $rate = $item['Rate'];
-            echo "<p style='color: #fff'>{$t}:<span>{$rate}</span></p>";
+    $res = [];
+    $text = [840 => 'USD', 978 => 'EUR', 643 => 'RUB'];
+    $kurs = explode(',', $get);
+    foreach ($content as $key => $item) {
+        foreach ($kurs as $i) {
+            if ($item['Code'] == $i) {
+                $t = $text[$i];
+                $rate = $item['Rate'];
+                echo "<p style='color: #fff'>{$t}:<span>{$rate}</span></p>";
+            }
         }
     }
 }
-
 ?>

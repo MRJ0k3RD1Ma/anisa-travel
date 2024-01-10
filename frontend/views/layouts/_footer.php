@@ -8,7 +8,7 @@
                     <div class="footer-widget mb-4">
                         <div class="brand-box">
                             <a href="index.html" class="mb-4 d-block">
-                                <img class="logo-light" src="/frntd/img/logo-footer.png" alt="">
+                                <img class="logo-light" src="/frntd/img/logo-footer.png?v=1" alt="">
                             </a>
                             <p class="lh-lg">
                                 <em>Туристическая компания , представляет уникальные решения по организации деловых поездок и путешествий по всему миру.

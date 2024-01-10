@@ -23,7 +23,7 @@ if ($lang == 'uz') {
                                     <label class="input-group-text bg-transparent border-0" for="txtWhere"><i
                                                 class="ti ti-map-pin"></i></label>
                                     <input type="text" class="form-control bg-transparent border-0 ps-0" name="s"
-                                           placeholder="Search: Type key words" id="txtWhere">
+                                           placeholder="Поиск: Введите ключевые слова" id="txtWhere">
                                 </div>
                                 <!-- /Where -->
                             </div>
@@ -33,7 +33,7 @@ if ($lang == 'uz') {
                         <!-- Button -->
                         <div class="check-button">
                             <button type="submit" class="btn btn-lg btn-primary w-100">
-                                <span>Search</span>
+                                <span>Поиск</span>
                             </button>
                         </div>
                         <!-- /Button -->
@@ -194,7 +194,7 @@ if ($lang == 'uz') {
                                                 <?php if($model->price < $model->old_price){?>
                                                 <div class="text-secondary fs-5">
                                                     <small>От:</small>
-                                                    <del class="fw-bold-2 d-inline-block"><sup>$</sup>250.50</del>
+                                                    <del class="fw-bold-2 d-inline-block"><sup>$</sup><?= $model->old_price?></del>
                                                 </div>
                                                 <?php }?>
                                                 <div class="d-flex align-items-center">

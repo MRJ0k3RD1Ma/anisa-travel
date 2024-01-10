@@ -50,7 +50,7 @@ if($lang == 'uz'){
                                     <!-- Where -->
                                     <div class="input-group input-group-lg where-input">
                                         <label class="input-group-text bg-transparent border-0" for="txtWhere"><i class="ti ti-search"></i></label>
-                                        <input type="text" class="form-control bg-transparent border-0 ps-0" name="s" placeholder="Search: Type key words" id="txtWhere">
+                                        <input type="text" class="form-control bg-transparent border-0 ps-0" name="s" placeholder="Поиск: Введите ключевые слова" id="txtWhere">
                                     </div>
                                 </div>
 
@@ -61,7 +61,7 @@ if($lang == 'uz'){
                             <div class="check-button">
                                 <button type="submit" class="btn btn-lg btn-primary w-100">
                                     <i class="ficon ficon-check-valid-state"></i>
-                                    <span>Search</span>
+                                    <span>Поиск</span>
                                 </button>
                             </div>
                             <!-- /Button -->

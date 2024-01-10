@@ -7,8 +7,8 @@
                 <div class="logo-nav-container">
                     <!-- Logo -->
                     <a id="logo" href="<?= Yii::$app->urlManager->createUrl(['/site/index'])?>" class="logo">
-                        <img loading="lazy" src="/frntd/img/logo.png" class="logo-dark" alt="">
-                        <img loading="lazy" src="/frntd/img/logo-light.png" class="logo-light" alt="">
+                        <img loading="lazy" src="/frntd/img/logo.png?v=1" class="logo-dark" alt="">
+                        <img loading="lazy" src="/frntd/img/logo-light.png?v=1" class="logo-light" alt="">
                         <h1 class="d-none">Anisa-Travel</h1>
                     </a>
                     <!-- /Logo -->
