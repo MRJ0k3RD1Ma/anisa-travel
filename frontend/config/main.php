@@ -96,6 +96,7 @@ return [
             'languages' => ['ru','uz'],
             'on languageChanged' => '\frontend\components\Lang::onLanguageChanged',
             'rules' => [
+                ''=>'site/index',
             ],
         ],
 

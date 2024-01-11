@@ -25,8 +25,8 @@ if($lang == 'uz'){
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-xl-6 col-lg-8">
-                            <h2 class="hero-title">Исследуйте Европу</h2>
-                            <p class="hero-desc">Исследуйте Европу и погрузитесь в ее великолепие и глубокое наследие. Посетите великолепные замки и окунитесь в страну романтической любви.</p>
+                            <h2 class="hero-title"><?= Yii::t('app','Исследуйте Европу')?></h2>
+                            <p class="hero-desc"><?= Yii::t('app','Исследуйте Европу и погрузитесь в ее великолепие и глубокое наследие. Посетите великолепные замки и окунитесь в страну романтической любви.')?></p>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@ if($lang == 'uz'){
                                     <!-- Where -->
                                     <div class="input-group input-group-lg where-input">
                                         <label class="input-group-text bg-transparent border-0" for="txtWhere"><i class="ti ti-search"></i></label>
-                                        <input type="text" class="form-control bg-transparent border-0 ps-0" name="s" placeholder="Поиск: Введите ключевые слова" id="txtWhere">
+                                        <input type="text" class="form-control bg-transparent border-0 ps-0" name="s" placeholder="<?= Yii::t('app','Поиск: Введите ключевые слова')?>" id="txtWhere">
                                     </div>
                                 </div>
 
@@ -61,7 +61,7 @@ if($lang == 'uz'){
                             <div class="check-button">
                                 <button type="submit" class="btn btn-lg btn-primary w-100">
                                     <i class="ficon ficon-check-valid-state"></i>
-                                    <span>Поиск</span>
+                                    <span><?= Yii::t('app','Поиск')?></span>
                                 </button>
                             </div>
                             <!-- /Button -->
@@ -81,8 +81,8 @@ if($lang == 'uz'){
     <div class="container">
         <!-- Heading -->
         <div class="heading">
-            <h2 class="title">Новые туры</h2>
-            <p>Привлекательные туры выбирают многие туристы</p>
+            <h2 class="title"><?= Yii::t('app','Новые туры')?></h2>
+            <p><?= Yii::t('app','Привлекательные туры выбирают многие туристы')?></p>
         </div>
         <!-- /Heading -->
         <!-- Tour list -->
@@ -106,14 +106,14 @@ if($lang == 'uz'){
                                 </div>
                                 <div class="tour-content p-3">
                                     <div class="tour-duration-location">
-                                        <span><?= $item->days?> - День</span>
+                                        <span><?= $item->days?> - <?= Yii::t('app','День')?></span>
                                     </div>
                                     <h3 class="tour-title">
                                         <a href="<?= Yii::$app->urlManager->createUrl(['/site/view','code'=>$item->code])?>"><?= $item->{'name'.$lang}?></a>
                                     </h3>
                                     <div class="tour-price">
                                         <div class="new-price text-danger">
-                                            <span>От:</span>
+                                            <span><?= Yii::t('app','От')?>:</span>
                                             <strong><sup>$</sup><?= $item->price?></strong>
                                         </div>
                                         <?php if($item->price < $item->old_price){?>
@@ -157,8 +157,8 @@ if($lang == 'uz'){
                         <div class="card-body">
                             <!-- Heading -->
                             <div class="heading">
-                                <h2 class="title">Почему выбрали нас?</h2>
-                                <p>Ведущий мировой туроператор и организация</p>
+                                <h2 class="title"><?= Yii::t('app','Почему выбрали нас?')?></h2>
+                                <p><?= Yii::t('app','Ведущий мировой туроператор и организация')?></p>
                             </div>
                             <!-- /Heading -->
                             <!-- Why list -->
@@ -168,8 +168,8 @@ if($lang == 'uz'){
                                         <img loading="lazy" src="/frntd/img/s1.svg" alt="">
                                     </div>
                                     <div class="content">
-                                        <h4>Бронируйте с гибкостью</h4>
-                                        <p>Забронируйте поездку легко и быстро и получите бесплатную отмену. Исследуйте великолепную и романтическую Европу на своем пути.</p>
+                                        <h4><?= Yii::t('app','Бронируйте с гибкостью')?></h4>
+                                        <p><?= Yii::t('app','Забронируйте поездку легко и быстро и получите бесплатную отмену. Исследуйте великолепную и романтическую Европу на своем пути.')?></p>
                                     </div>
                                 </li>
                                 <li class="why-item">
@@ -177,8 +177,8 @@ if($lang == 'uz'){
                                         <img loading="lazy" src="/frntd/img/s2.svg" alt="">
                                     </div>
                                     <div class="content">
-                                        <h4>Гарантия лучшей цены</h4>
-                                        <p>Мы стремимся предлагать лучшие цены и множество рекламных акций, чтобы подарить вам незабываемые европейские приключения.</p>
+                                        <h4><?= Yii::t('app','Гарантия лучшей цены')?></h4>
+                                        <p><?= Yii::t('app','Мы стремимся предлагать лучшие цены и множество рекламных акций, чтобы подарить вам незабываемые европейские приключения.')?></p>
                                     </div>
                                 </li>
                                 <li class="why-item">
@@ -186,8 +186,8 @@ if($lang == 'uz'){
                                         <img loading="lazy" src="/frntd/img/s3.svg" alt="">
                                     </div>
                                     <div class="content">
-                                        <h4>Бесплатная поддержка 24/7</h4>
-                                        <p>Мы поддерживаем вас в каждой поездке и готовы помочь вам в кратчайшие сроки, когда вы в нас нуждаетесь. Мы онлайн 24/7.</p>
+                                        <h4><?= Yii::t('app','Бесплатная поддержка 24/7')?></h4>
+                                        <p><?= Yii::t('app','Мы поддерживаем вас в каждой поездке и готовы помочь вам в кратчайшие сроки, когда вы в нас нуждаетесь. Мы онлайн 24/7.')?></p>
                                     </div>
                                 </li>
                             </ul>
@@ -211,8 +211,8 @@ if($lang == 'uz'){
                 <div class="col-12 col-xl-3">
                     <!-- Heading -->
                     <div class="heading">
-                        <h2 class="title">Исследуйте Европу по-своему</h2>
-                        <p>Исследуйте древнюю цивилизацию Европы с ее роскошными и великолепными городами и романтическими любовными сценами.</p>
+                        <h2 class="title"><?= Yii::t('app','Исследуйте Европу по-своему')?></h2>
+                        <p><?= Yii::t('app','Исследуйте древнюю цивилизацию Европы с ее роскошными и великолепными городами и романтическими любовными сценами.')?></p>
                     </div>
                     <!-- /Heading -->
                 </div>
@@ -230,11 +230,11 @@ if($lang == 'uz'){
                                     </figure>
                                     <div class="card-body p-3 p-sm-4">
                                         <h3 class="card-title">
-                                            <a href="#">Групповые приключения</a>
+                                            <a href="#"><?= Yii::t('app','Групповые приключения')?></a>
                                         </h3>
-                                        <p>Присоединяйтесь к дружной туристической группе для незабываемых путешествий.</p>
+                                        <p><?= Yii::t('app','Присоединяйтесь к дружной туристической группе для незабываемых путешествий.')?></p>
                                         <a href="#" class="detail-link">
-                                            <span>Исследователь</span>
+                                            <span><?= Yii::t('app','Исследователь')?></span>
                                             <i class="ti ti-arrow-narrow-right"></i>
                                         </a>
                                     </div>
@@ -250,10 +250,10 @@ if($lang == 'uz'){
                                         </a>
                                     </figure>
                                     <div class="card-body p-3 p-sm-4">
-                                        <h3 class="card-title"><a href="#">Частные приключения</a> </h3>
-                                        <p>Путешествуйте исключительно со своими друзьями, семьей и близкими.</p>
+                                        <h3 class="card-title"><a href="#"><?= Yii::t('app','Частные приключения')?></a> </h3>
+                                        <p><?= Yii::t('app','Путешествуйте исключительно со своими друзьями, семьей и близкими.')?></p>
                                         <a href="#" class="detail-link">
-                                            <span>Исследователь</span>
+                                            <span><?= Yii::t('app','Исследователь')?></span>
                                             <i class="ti ti-arrow-narrow-right"></i>
                                         </a>
                                     </div>
@@ -269,10 +269,10 @@ if($lang == 'uz'){
                                         </a>
                                     </figure>
                                     <div class="card-body p-3 p-sm-4">
-                                        <h3 class="card-title"><a href="#">Индивидуальные приключения</a></h3>
-                                        <p>Настройте существующий маршрут или создайте свой собственный.</p>
+                                        <h3 class="card-title"><a href="#"><?= Yii::t('app','Индивидуальные приключения')?></a></h3>
+                                        <p><?= Yii::t('app','Настройте существующий маршрут или создайте свой собственный.')?></p>
                                         <a href="#" class="detail-link">
-                                            <span>Исследователь</span>
+                                            <span><?= Yii::t('app','Исследователь')?></span>
                                             <i class="ti ti-arrow-narrow-right"></i>
                                         </a>
                                     </div>
@@ -295,8 +295,8 @@ if($lang == 'uz'){
     <div class="container">
         <!-- Heading -->
         <div class="heading">
-            <h2 class="title">Полезная информация</h2>
-            <p>Узнайте необходимую информацию, которая вам понадобится в поездке</p>
+            <h2 class="title"><?= Yii::t('app','Полезная информация')?></h2>
+            <p><?= Yii::t('app','Узнайте необходимую информацию, которая вам понадобится в поездке')?></p>
         </div>
         <!-- /Heading -->
         <!-- Blog mini -->
@@ -347,15 +347,15 @@ if($lang == 'uz'){
                         <!-- Content -->
                         <div class="signup-content p-4 m-0 m-xl-3">
                             <div class="heading">
-                                <h2 class="title">Подпишитесь на наши новости</h2>
-                                <p>Подпишитесь сейчас, чтобы получать советы путешественникам, персональные маршруты и вдохновение для отпуска прямо на свой почтовый ящик.</p>
+                                <h2 class="title"><?= Yii::t('app','Подпишитесь на наши новости')?></h2>
+                                <p><?= Yii::t('app','Подпишитесь сейчас, чтобы получать советы путешественникам, персональные маршруты и вдохновение для отпуска прямо на свой почтовый ящик.')?></p>
                             </div>
                             <div class="input-group input-group-lg mb-4">
-                                <input type="text" class="form-control" placeholder="Ex: yourname@example.com" aria-label="Your Email">
-                                <button class="btn btn-primary" type="button">Зарегистрироваться</button>
+                                <input type="text" class="form-control" placeholder="Ex: yourname@example.com" aria-label="<?= Yii::t('app','Your Email')?>">
+                                <button class="btn btn-primary" type="button"><?= Yii::t('app','Зарегистрироваться')?></button>
                             </div>
                             <p class="signup-note">
-                                Примечание: <em>Зарегистрировавшись, вы соглашаетесь получать рекламные электронные письма и полезные советы. Вы можете отказаться от подписки о своем согласии в любое время с эффектом в будущем.</em>
+                                <?= Yii::t('app','Примечание')?>: <em><?= Yii::t('app','Зарегистрировавшись, вы соглашаетесь получать рекламные электронные письма и полезные советы. Вы можете отказаться от подписки о своем согласии в любое время с эффектом в будущем.')?></em>
                             </p>
                         </div>
                         <!-- /Content -->

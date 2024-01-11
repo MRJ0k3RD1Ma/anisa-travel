@@ -23,7 +23,7 @@ if ($lang == 'uz') {
                                     <label class="input-group-text bg-transparent border-0" for="txtWhere"><i
                                                 class="ti ti-map-pin"></i></label>
                                     <input type="text" class="form-control bg-transparent border-0 ps-0" name="s"
-                                           placeholder="Поиск: Введите ключевые слова" id="txtWhere">
+                                           placeholder="<?= Yii::t('app','Поиск: Введите ключевые слова')?>" id="txtWhere">
                                 </div>
                                 <!-- /Where -->
                             </div>
@@ -33,7 +33,7 @@ if ($lang == 'uz') {
                         <!-- Button -->
                         <div class="check-button">
                             <button type="submit" class="btn btn-lg btn-primary w-100">
-                                <span>Поиск</span>
+                                <span><?= Yii::t('app','Поиск')?></span>
                             </button>
                         </div>
                         <!-- /Button -->
@@ -54,7 +54,7 @@ if ($lang == 'uz') {
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= Yii::$app->urlManager->createUrl(['/'])?>">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="<?= Yii::$app->urlManager->createUrl(['/'])?>"><?= Yii::t('app','Главная')?></a></li>
                     <?php if(isset($category)){?>
                     <?php foreach (\frontend\components\Menu::Breadcrumb($category->id) as $item):?>
                         <?= $item?>
@@ -94,7 +94,7 @@ if ($lang == 'uz') {
                                 <div class="tour-content p-3">
                                     <?php if($item->cat->type_id == 1){?>
                                     <div class="tour-duration-location">
-                                        <span><?= $item->days ?> день</span>
+                                        <span><?= $item->days ?> <?= Yii::t('app','день')?></span>
                                     </div>
                                     <?php }?>
                                     <h3 class="tour-title">
@@ -104,7 +104,7 @@ if ($lang == 'uz') {
 
                                     <div class="tour-price">
                                         <div class="new-price text-danger">
-                                            <span>От:</span>
+                                            <span><?= Yii::t('app','От')?>:</span>
                                             <strong><sup>$</sup><?= $item->price ?></strong>
                                         </div>
                                         <?php if ($item->price < $item->old_price) { ?>

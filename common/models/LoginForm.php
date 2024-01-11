@@ -34,9 +34,9 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'username'=>'Login',
-            'password'=>'Parol',
-            'rememberMe'=>'Parolni eslab qolish'
+            'username'=>'Логинь',
+            'password'=>'Пароль',
+            'rememberMe'=>'Запомнить пароль'
         ];
     }
     /**
@@ -51,7 +51,7 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Login yoki parol xato kiritilgan');
+                $this->addError($attribute, 'Логин или пароль был введен неверно');
             }
         }
     }

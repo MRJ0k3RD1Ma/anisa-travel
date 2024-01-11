@@ -113,7 +113,7 @@ if ($lang == 'uz') {
                                     <?php }?>
                                     <div class="site-contact">
                                         <p>
-                                            Если у вас есть деловые запросы или другие вопросы, пожалуйста, заполните следующую форму, чтобы связаться с нами. Спасибо.
+                                            <?= Yii::t('app','Если у вас есть деловые запросы или другие вопросы, пожалуйста, заполните следующую форму, чтобы связаться с нами. Спасибо.')?>
                                         </p>
 
 
@@ -132,7 +132,7 @@ if ($lang == 'uz') {
                                         ]) ?>
 
                                         <div class="form-group">
-                                            <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                                            <?= Html::submitButton(Yii::t('app', 'Отправить'), ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                                         </div>
 
                                         <?php ActiveForm::end(); ?>
@@ -153,7 +153,7 @@ if ($lang == 'uz') {
 
                                     <div class="side-widget h-auto border-bottom pb-4 mb-5">
                                         <div class="heading">
-                                            <h4 class="title">Недавние Посты</h4>
+                                            <h4 class="title"><?= Yii::t('app','Недавние Посты')?></h4>
                                         </div>
                                         <div class="blog-mini">
                                             <?php foreach (\common\models\Travel::find()->where('cat_id in (select id from category where type_id = 2)')->limit(6)->orderBy(['id'=>SORT_DESC])->all() as $item):?>

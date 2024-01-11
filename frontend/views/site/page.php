@@ -23,7 +23,7 @@ if ($lang == 'uz') {
                                     <label class="input-group-text bg-transparent border-0" for="txtWhere"><i
                                                 class="ti ti-map-pin"></i></label>
                                     <input type="text" class="form-control bg-transparent border-0 ps-0" name="s"
-                                           placeholder="Поиск: Введите ключевые слова" id="txtWhere">
+                                           placeholder="<?= Yii::t('app','Поиск: Введите ключевые слова')?>" id="txtWhere">
                                 </div>
                                 <!-- /Where -->
                             </div>
@@ -33,7 +33,7 @@ if ($lang == 'uz') {
                         <!-- Button -->
                         <div class="check-button">
                             <button type="submit" class="btn btn-lg btn-primary w-100">
-                                <span>Поиск</span>
+                                <span><?= Yii::t('app','Поиск')?></span>
                             </button>
                         </div>
                         <!-- /Button -->
@@ -53,7 +53,7 @@ if ($lang == 'uz') {
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= Yii::$app->urlManager->createUrl(['/'])?>">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="<?= Yii::$app->urlManager->createUrl(['/'])?>"><?= Yii::t('app','Главная')?></a></li>
                     <?php foreach (\frontend\components\Menu::Breadcrumb($model->cat_id) as $item):?>
                     <?= $item?>
                     <?php endforeach;?>
@@ -79,7 +79,7 @@ if ($lang == 'uz') {
                 <div class="photo-list rounded-3 overflow-hidden d-flex align-items-center">
                     <div class="row g-2 align-items-center">
                         <div class="col-12 col-md-6">
-                            <a href="/upload/<?= $model->image?>" class="photo-item glightbox d-block" data-gallery="tour-photo" data-glightbox="title: <?= $model->{'name'.$lang}?>">
+                            <a href="/upload/<?= $model->image?>" class="photo-item glightbox d-block" data-gallery="tour-photo" data-glightbox="<?= Yii::t('app','Заголовок')?>: <?= $model->{'name'.$lang}?>">
                                 <figure>
                                     <img loading="lazy" src="/upload/<?=$model->image?>" class="img-fluid" alt="">
                                 </figure>
@@ -94,7 +94,7 @@ if ($lang == 'uz') {
                                         if($key < 3){
                                 ?>
                                 <div class="col-6">
-                                    <a href="/upload/<?= $item->image?>" class="photo-item glightbox d-block" data-gallery="tour-photo" data-glightbox="title: <?= $model->{'name'.$lang}?>">
+                                    <a href="/upload/<?= $item->image?>" class="photo-item glightbox d-block" data-gallery="tour-photo" data-glightbox="<?= Yii::t('app','Заголовок')?>: <?= $model->{'name'.$lang}?>">
                                         <figure>
                                             <img loading="lazy" src="/upload/<?= $item->image?>" class="img-fluid" alt="">
                                         </figure>
@@ -103,15 +103,15 @@ if ($lang == 'uz') {
                                 <?php }else{ if($key == 3){?>
 
                                         <div class="col-6">
-                                            <a href="/upload/<?= $item->image?>" class="photo-item all-photo glightbox d-block" data-gallery="tour-photo" data-glightbox="title: <?= $model->{'name'.$lang}?>">
+                                            <a href="/upload/<?= $item->image?>" class="photo-item all-photo glightbox d-block" data-gallery="tour-photo" data-glightbox="<?= Yii::t('app','Заголовок')?>: <?= $model->{'name'.$lang}?>">
                                                 <figure>
                                                     <img loading="lazy" src="/upload/<?= $item->image?>" class="img-fluid" alt="">
-                                                    <figcaption>Все фотографии (<?= \common\models\TravelImage::find()->where(['travel_id'=>$model->id])->count('*')+1?>)</figcaption>
+                                                    <figcaption><?= Yii::t('app','Все фотографии')?> (<?= \common\models\TravelImage::find()->where(['travel_id'=>$model->id])->count('*')+1?>)</figcaption>
                                                 </figure>
                                             </a>
                                             <?php }else{?>
                                             <!-- Hidden photos -->
-                                            <a href="/upload/<?= $item->image?>" class="photo-item glightbox d-none" data-gallery="tour-photo" data-glightbox="title: <?= $model->{'name'.$lang}?>"></a>
+                                            <a href="/upload/<?= $item->image?>" class="photo-item glightbox d-none" data-gallery="tour-photo" data-glightbox="<?= Yii::t('app','Заголовок')?>: <?= $model->{'name'.$lang}?>"></a>
 
                                             <?php }?>
 
@@ -139,14 +139,14 @@ if ($lang == 'uz') {
                                     <div class="col-12 col-xl-3 col-lg-4 col-md-6">
                                         <div class="mb-2">
                                             <i class="ti ti-qrcode fs-5"></i>
-                                            <span class="me-2"> Дни:</span>
+                                            <span class="me-2"> <?= Yii::t('app','Дни')?>:</span>
                                             <strong><?= $model->days?></strong>
                                         </div>
                                     </div>
                                     <div class="col-12 col-xl-3 col-lg-4 col-md-6">
                                         <div class="mb-2">
                                             <i class="ti ti-qrcode fs-5"></i>
-                                            <span class="me-2"> Ночи:</span>
+                                            <span class="me-2"> <?= Yii::t('app','Ночи')?>:</span>
                                             <strong><?= $model->days?></strong>
                                         </div>
                                     </div>
@@ -154,7 +154,7 @@ if ($lang == 'uz') {
                                     <div class="col-12 col-xl-3 col-lg-4 col-md-6">
                                         <div class="mb-2">
                                             <i class="ti ti-qrcode fs-5"></i>
-                                            <span class="me-2"> Летать:</span>
+                                            <span class="me-2"> <?= Yii::t('app','Летать')?>:</span>
                                             <strong><?= $model->is_fly == 1 ? "Да" : 'Нет'?></strong>
                                         </div>
                                     </div>
@@ -184,13 +184,13 @@ if ($lang == 'uz') {
                                             <div class="mb-4">
                                                 <?php if($model->price < $model->old_price){?>
                                                 <div class="text-secondary fs-5">
-                                                    <small>От:</small>
-                                                    <del class="fw-bold-2 d-inline-block"><sup>$</sup>250.50</del>
+                                                    <small><?= Yii::t('app','От')?>:</small>
+                                                    <del class="fw-bold-2 d-inline-block"><sup>$</sup><?= $model->old_price?></del>
                                                 </div>
                                                 <?php }?>
                                                 <div class="d-flex align-items-center">
                                                     <span class=" fw-bold-3 fs-1 text-dark d-inline-block"><sup>$</sup><?= $model->price?></span>
-                                                    <span class="mt-2 d-inline-block">/человек</span>
+                                                    <span class="mt-2 d-inline-block">/<?= Yii::t('app','человек')?></span>
                                                 </div>
                                             </div>
                                             <!-- /Tour price -->
@@ -202,36 +202,36 @@ if ($lang == 'uz') {
                                                 <div class="col-12 col-xl-12 col-md-6">
                                                     <div class="control-icon control-icon-lg mb-4">
                                                         <label class="ti ti-user"></label>
-                                                        <input type="text" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="Имя">
+                                                        <input type="text" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="<?= Yii::t('app','Имя')?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-xl-12 col-md-6">
                                                     <div class="control-icon control-icon-lg mb-4">
                                                         <label class="ti ti-phone"></label>
-                                                        <input type="text" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="Телефон">
+                                                        <input type="text" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="<?= Yii::t('app','Телефон')?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-xl-12 col-md-6">
                                                     <div class="control-icon control-icon-lg select-date mb-4">
                                                         <label class="ti ti-calendar-event"></label>
-                                                        <input type="text" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="Дата отбытия" id="txtCheckDate" data-input readonly="readonly">
+                                                        <input type="text" class="form-control form-control-lg placeholder-dark shadow-sm" placeholder="<?= Yii::t('app','Дата отбытия')?>" id="txtCheckDate" data-input readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-xl-12 col-md-6">
                                                     <div class="mb-4">
                                                         <div class="mb-3">
-                                                            <label for="txtCheckAdults" class="form-label">Взрослые</label>
+                                                            <label for="txtCheckAdults" class="form-label"><?= Yii::t('app','Взрослые')?></label>
                                                             <div class="input-group input-group-lg shadow-sm">
                                                                 <button class="btn btn-outline-light" type="button" data-minus-adults=""><i class="ti ti-minus"></i></button>
-                                                                <input type="text" class="form-control text-center" placeholder="Взрослые" value="1" aria-label="Adults" id="txtCheckAdults" data-input-adults="">
+                                                                <input type="text" class="form-control text-center" placeholder="<?= Yii::t('app','Взрослые')?>" value="1" aria-label="Adults" id="txtCheckAdults" data-input-adults="">
                                                                 <button class="btn btn-outline-light" type="button" data-plus-adults=""><i class="ti ti-plus"></i></button>
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="txtCheckChildren" class="form-label">Дети</label>
+                                                            <label for="txtCheckChildren" class="form-label"><?= Yii::t('app','Дети')?></label>
                                                             <div class="input-group input-group-lg shadow-sm">
                                                                 <button class="btn btn-outline-light" type="button" data-minus-children=""><i class="ti ti-minus"></i></button>
-                                                                <input type="text" class="form-control text-center" placeholder="Дети" value="0" aria-label="Children" id="txtCheckChildren"  data-input-children="">
+                                                                <input type="text" class="form-control text-center" placeholder="<?= Yii::t('app','Дети')?>" value="0" aria-label="Children" id="txtCheckChildren"  data-input-children="">
                                                                 <button class="btn btn-outline-light" type="button" data-plus-children=""><i class="ti ti-plus"></i></button>
                                                             </div>
                                                         </div>
@@ -239,13 +239,13 @@ if ($lang == 'uz') {
                                                 </div>
                                                 <div class="col-12 col-xl-12 col-md-6">
                                                     <div class="mb-4 mb-md-0 mb-lg-0 mb-xl-4">
-                                                        <button class="btn btn-lg btn-primary w-100">Бронирование</button>
+                                                        <button class="btn btn-lg btn-primary w-100"><?= Yii::t('app','Бронирование')?></button>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-xl-12 col-md-6">
                                                     <p class="text-secondary fs-7 mb-0">
                                                         <i class="ti ti-discount-check text-dark"></i>
-                                                        <a href="#">Забронируйте сейчас и заплатите позже</a>, чтобы забронировать место и ничего не платить сегодня
+                                                        <a href="#"><?= Yii::t('app','Забронируйте сейчас и заплатите позже, чтобы забронировать место и ничего не платить сегодня')?></a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -268,7 +268,7 @@ if ($lang == 'uz') {
 
                                 <div class="side-widget h-auto border-bottom pb-4 mb-5">
                                     <div class="heading">
-                                        <h4 class="title">Недавние Посты</h4>
+                                        <h4 class="title"><?= Yii::t('app','Недавние Посты')?></h4>
                                     </div>
                                     <div class="blog-mini">
                                         <?php foreach (\common\models\Travel::find()->where('cat_id in (select id from category where type_id = 2)')->limit(6)->orderBy(['id'=>SORT_DESC])->all() as $item):?>
