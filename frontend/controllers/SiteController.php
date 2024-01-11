@@ -92,13 +92,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index',['name'=>'Главная | Anisatravel.uz']);
+        return $this->render('index',['name'=>Yii::t('app','Главная').' | Anisatravel.uz']);
     }
 
 
     public function actionSearch($s = null){
 
-        $name = "Результаты поиска";
+        $name = Yii::t('app',"Результаты поиска");
         $code = '11';
         if($s == null){
             $code = "desc";
@@ -166,7 +166,7 @@ class SiteController extends Controller
 
         if($code == null){
             $code = "desc";
-            $name = "Все";
+            $name = Yii::t('app',"Все");
         }
         $model = null;
         switch ($code){
@@ -294,9 +294,9 @@ class SiteController extends Controller
             if($model->load($this->request->post())){
                 $model->date = date('Y-m-d',strtotime($model->date));
                 if($model->save()){
-                    Yii::$app->session->setFlash('success','Поздравляем с бронированием! Наши сотрудники свяжутся с вами в ближайшее время.');
+                    Yii::$app->session->setFlash('success',Yii::t('app','Поздравляем с бронированием! Наши сотрудники свяжутся с вами в ближайшее время.'));
                 }else{
-                    Yii::$app->session->setFlash('error','Произошла ошибка бронирования, поскольку введенной информации было недостаточно. Пожалуйста, попробуйте еще раз.');
+                    Yii::$app->session->setFlash('error',Yii::t('app','Произошла ошибка бронирования, поскольку введенной информации было недостаточно. Пожалуйста, попробуйте еще раз.'));
                 }
             }
             return $this->redirect(['/site/view','code'=>$code]);
@@ -403,9 +403,9 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.');
+                Yii::$app->session->setFlash('success', Yii::t('app','Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.'));
             } else {
-                Yii::$app->session->setFlash('error', 'При отправке вашего сообщения произошла ошибка.');
+                Yii::$app->session->setFlash('error', Yii::t('app','При отправке вашего сообщения произошла ошибка.'));
             }
 
             return $this->refresh();
