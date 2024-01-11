@@ -22,15 +22,12 @@
                                     <i class="ti ti-chevron-down dropdown-indicator"></i>
                                 </a>
                                 <ul>
-                                    <li><a href="<?= Yii::$app->urlManager->createUrl(['/site/index','language'=>'en'])?>">EN</a></li>
                                     <li><a href="<?= Yii::$app->urlManager->createUrl(['/site/index','language'=>'uz'])?>">UZ</a></li>
                                     <li><a href="<?= Yii::$app->urlManager->createUrl(['/site/index','language'=>'ru'])?>">RU</a></li>
-
                                 </ul>
                             </li>
                             </ul>
                     </nav>
-
 
 
                     <!-- Mobile toggle -->

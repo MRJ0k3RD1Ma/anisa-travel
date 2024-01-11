@@ -29,7 +29,6 @@ class SourceMessage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id'], 'required'],
             [['id'], 'integer'],
             [['message'], 'string'],
             [['category'], 'string', 'max' => 255],

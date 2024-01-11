@@ -45,14 +45,42 @@ return [
         ],
         'i18n' => [
             'translations' => [
-                '*' => [
+                'app' => [
                     'class' => 'yii\i18n\DbMessageSource',
                     //'basePath' => '@app/messages',
                     'sourceLanguage' => 'ru',
-                    'enableCaching' => true,
-                    'cachingDuration' => 10,
-                    'forceTranslation'=>true,
-                    'on missingTranslation' => ['common\components\TranslationEventHandler', 'handleMissingTranslation']
+                    'enableCaching' => false,
+//                    'cachingDuration' => 10,
+//                    'forceTranslation'=>true,
+//                    'on missingTranslation' => ['common\components\TranslationEventHandler', 'handleMissingTranslation']
+                    'on missingTranslation' => function($event) {
+                        // use dumper to check that missingTranslationEvent triggerd or not
+//                        yii\helpers\VarDumper::dump($event,10,true);die();
+                        $source = new common\models\SourceMessage;
+                        $message = new common\models\Message;
+
+                        $test = common\models\SourceMessage::find()
+                            ->where(['category' => $event->category, 'message' => $event->message]);
+
+                        if($test->exists()) {
+                            $data = $test->one();
+                            $message->id = $data->id;
+                        } else {
+                            $source->category = $event->category;
+                            $source->message  = $event->message;
+                            $source->save();
+                            $message->id = $source->id;
+
+
+                        }
+
+                        $message->language = $event->language;
+                        if($event->language != 'ru'){
+                            $event->message = addslashes($event->message);
+                        }
+                        $message->translation = $event->message;
+                        $message->save();
+                    },
                 ],
             ],
         ],
@@ -65,7 +93,7 @@ return [
             'enableDefaultLanguageUrlCode' => true,
             // List all supported languages here
             // Make sure, you include your app's default language.
-            'languages' => ['ru','en','uz'],
+            'languages' => ['ru','uz'],
             'on languageChanged' => '\frontend\components\Lang::onLanguageChanged',
             'rules' => [
             ],
