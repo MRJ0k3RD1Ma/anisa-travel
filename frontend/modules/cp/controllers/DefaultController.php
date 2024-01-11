@@ -2,6 +2,7 @@
 
 namespace frontend\modules\cp\controllers;
 
+use common\components\GoogleTranslate;
 use common\models\Category;
 use common\models\CIndividual;
 use common\models\CLegal;
@@ -9,6 +10,7 @@ use common\models\Contract;
 use common\models\DistrictView;
 use common\models\Employee;
 use common\models\Income;
+use common\models\Message;
 use common\models\MovementView;
 use common\models\Organization;
 use common\models\User;
@@ -86,6 +88,18 @@ class DefaultController extends Controller
             }
         }
         return 0;
+    }
+
+
+    public function actionTranslate(){
+        $model = Message::find()->where(['language'=>'uz'])->all();
+        /* @var $item Message*/
+        foreach ($model as $item){
+            $text = GoogleTranslate::translate('ru','uz',stripslashes($item->translation));
+            $item->translation = $text;
+            $item->save(false);
+        }
+        return "ok";
     }
 
 }

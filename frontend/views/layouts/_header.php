@@ -26,8 +26,12 @@
                                     <li><a href="<?= Yii::$app->urlManager->createUrl(['/site/index','language'=>'ru'])?>">RU</a></li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <?= $this->render('_kurs')?>
+                            </li>
                             </ul>
                     </nav>
+
 
 
                     <!-- Mobile toggle -->

@@ -38,14 +38,28 @@ if($content) {
     $res = [];
     $text = [840 => 'USD', 978 => 'EUR', 643 => 'RUB'];
     $kurs = explode(',', $get);
+    $g = '840';
+    $k = explode(',', $g);
+
+    foreach ($content as $key => $item) {
+        foreach ($k as $i) {
+            if ($item['Code'] == $i) {
+                $t = $text[$i];
+                $rate = $item['Rate'];
+                echo "<a href=\"#\"><span style=\"text-transform: uppercase\">{$t}: {$rate}</span><i class=\"ti ti-chevron-down dropdown-indicator\"></i></a>";
+            }
+        }
+    }
+    echo "<ul>";
     foreach ($content as $key => $item) {
         foreach ($kurs as $i) {
             if ($item['Code'] == $i) {
                 $t = $text[$i];
                 $rate = $item['Rate'];
-                echo "<p style='color: #fff'>{$t}:<span>{$rate}</span></p>";
+                echo "<li><a class=\"dropdown-item\">{$t}: {$rate}</a></li>";
             }
         }
     }
+    echo "</ul>";
 }
 ?>

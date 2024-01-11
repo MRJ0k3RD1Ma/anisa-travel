@@ -48,7 +48,7 @@ return [
                 'app' => [
                     'class' => 'yii\i18n\DbMessageSource',
                     //'basePath' => '@app/messages',
-                    'sourceLanguage' => 'ru',
+                    'sourceLanguage' => 'de',
                     'enableCaching' => false,
 //                    'cachingDuration' => 10,
 //                    'forceTranslation'=>true,

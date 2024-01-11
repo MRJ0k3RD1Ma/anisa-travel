@@ -85,7 +85,7 @@
                     <div class="footer-widget mb-4">
 
                         <div class="footer-social">
-                            <h5 class="widget-title social-title mb-4 text-white fw-bold-1">Подключайтесь к социальным сетям</h5>
+                            <h5 class="widget-title social-title mb-4 text-white fw-bold-1"><?= Yii::t('app','Подключайтесь к социальным сетям')?></h5>
                             <div class="social-list">
                                 <a href="#" class="btn-social btn-facebook"><i class="ti ti-brand-facebook"></i></a>
                                 <a href="#" class="btn-social btn-twitter"><i class="ti ti-brand-twitter"></i></a>

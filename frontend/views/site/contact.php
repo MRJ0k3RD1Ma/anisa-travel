@@ -8,7 +8,7 @@ use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'Контакт';
+$this->title = Yii::t('app', 'Контакты') ;
 $name = $this->title;
 $this->params['breadcrumbs'][] = $this->title;
 $category = \common\models\Category::find()->where(['code'=>'/site/contact'])->one();
@@ -39,7 +39,7 @@ if ($lang == 'uz') {
                                     <label class="input-group-text bg-transparent border-0" for="txtWhere"><i
                                                 class="ti ti-map-pin"></i></label>
                                     <input type="text" class="form-control bg-transparent border-0 ps-0" name="s"
-                                           placeholder="Search: Type key words" id="txtWhere">
+                                           placeholder="<?= Yii::t('app','Поиск: Введите ключевые слова')?>" id="txtWhere">
                                 </div>
                                 <!-- /Where -->
                             </div>
@@ -49,7 +49,7 @@ if ($lang == 'uz') {
                         <!-- Button -->
                         <div class="check-button">
                             <button type="submit" class="btn btn-lg btn-primary w-100">
-                                <span>Search</span>
+                                <span><?= Yii::t('app','Поиск')?></span>
                             </button>
                         </div>
                         <!-- /Button -->
@@ -69,7 +69,7 @@ if ($lang == 'uz') {
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= Yii::$app->urlManager->createUrl(['/'])?>">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="<?= Yii::$app->urlManager->createUrl(['/'])?>"><?= Yii::t('app','Главная')?></a></li>
                     <?php if($category){?>
                     <?php foreach (\frontend\components\Menu::Breadcrumb($category->id) as $item):?>
                         <?= $item?>
