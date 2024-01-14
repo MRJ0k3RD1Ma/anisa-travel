@@ -4,12 +4,12 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Banner;
+use common\models\Order;
 
 /**
- * BannerSearch represents the model behind the search form of `common\models\Banner`.
+ * OrderSearch represents the model behind the search form of `common\models\Order`.
  */
-class BannerSearch extends Banner
+class OrderSearch extends Order
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class BannerSearch extends Banner
     public function rules()
     {
         return [
-            [['id', 'status'], 'integer'],
-            [['image', 'name', 'detail', 'created', 'updated', 'name_ru', 'detail_ru', 'name_en', 'detail_en'], 'safe'],
+            [['id', 'adults', 'child', 'status', 'travel_id'], 'integer'],
+            [['name', 'phone', 'date', 'created', 'updated'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class BannerSearch extends Banner
      */
     public function search($params)
     {
-        $query = Banner::find();
+        $query = Order::find();
 
         // add conditions that should always apply here
 
@@ -59,18 +59,17 @@ class BannerSearch extends Banner
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'status' => $this->status,
+            'date' => $this->date,
+            'adults' => $this->adults,
+            'child' => $this->child,
             'created' => $this->created,
             'updated' => $this->updated,
+            'status' => $this->status,
+            'travel_id' => $this->travel_id,
         ]);
 
-        $query->andFilterWhere(['like', 'image', $this->image])
-            ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'detail', $this->detail])
-            ->andFilterWhere(['like', 'name_ru', $this->name_ru])
-            ->andFilterWhere(['like', 'detail_ru', $this->detail_ru])
-            ->andFilterWhere(['like', 'name_en', $this->name_en])
-            ->andFilterWhere(['like', 'detail_en', $this->detail_en]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'phone', $this->phone]);
 
         return $dataProvider;
     }

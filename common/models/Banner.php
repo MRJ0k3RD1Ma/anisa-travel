@@ -14,6 +14,10 @@ use Yii;
  * @property int|null $status
  * @property string|null $created
  * @property string|null $updated
+ * @property string|null $name_ru
+ * @property string|null $detail_ru
+ * @property string|null $name_en
+ * @property string|null $detail_en
  */
 class Banner extends \yii\db\ActiveRecord
 {
@@ -31,10 +35,10 @@ class Banner extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['detail'], 'string'],
+            [['detail', 'detail_ru', 'detail_en'], 'string'],
             [['status'], 'integer'],
             [['created', 'updated'], 'safe'],
-            [['image', 'name'], 'string', 'max' => 255],
+            [['image', 'name', 'name_ru', 'name_en'], 'string', 'max' => 255],
         ];
     }
 
@@ -46,11 +50,15 @@ class Banner extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'image' => 'Rasm',
-            'name' => 'Qisqa matn',
-            'detail' => 'Batafsil',
+            'name' => 'Qisqa matn(UZ)',
+            'detail' => 'Batafsil(UZ)',
             'status' => 'Status',
-            'created' => 'Created',
-            'updated' => 'Updated',
+            'created' => 'Kiritildi',
+            'updated' => 'So`ngi o`zgarish',
+            'name_ru' => 'Qisqa matn(RU)',
+            'detail_ru' => 'Batafsil(RU)',
+            'name_en' => 'Qisqa matn(EN)',
+            'detail_en' => 'Batafsil(EN)',
         ];
     }
 }

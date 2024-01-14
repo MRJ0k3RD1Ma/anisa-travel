@@ -1,26 +1,22 @@
 <?php
 
-use common\models\Banner;
+use common\models\Order;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var common\models\search\BannerSearch $searchModel */
+/** @var common\models\search\OrderSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Bannerlar';
+$this->title = 'Buyurtmalar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="banner-index">
-
-
+<div class="order-index">
     <div class="card">
         <div class="card-body">
-            <p>
-                <?= Html::a('Banner qo`shish', ['create'], ['class' => 'btn btn-success']) ?>
-            </p>
+
 
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -31,20 +27,35 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-//            'image',
-//                    'name',
                     [
                         'attribute'=>'name',
                         'format'=>'raw',
                         'value'=>function ($d) {
-                            $url = Yii::$app->urlManager->createUrl(['/cp/banner/view','id'=>$d->id]);
+                            $url = Yii::$app->urlManager->createUrl(['/cp/order/view','id'=>$d->id]);
                             return "<a href='{$url}'>{$d->name}</a>";
                         },
                     ],
-//                    'detail:ntext',
-                    'name_ru',
-                    'name_en',
-//            'status',
+
+                    'phone',
+                    [
+                        'attribute'=>'date',
+                        'format'=>'raw',
+                        'value'=>function ($d) {
+                            $url = Yii::$app->urlManager->createUrl(['/cp/order/view','id'=>$d->id]);
+                            return "<a href='{$url}'>{$d->date}</a>";
+                        },
+                    ],
+                    'adults',
+                    [
+                        'attribute'=>'travel_id',
+                        'value'=>function($d){
+                            return $d->travel->name;
+                        },
+                        'filter'=>false,
+                    ],
+                    //'child',
+                    //'created',
+                    'updated',
                     [
                         'attribute'=>'status',
                         'value'=>function($d){
@@ -52,8 +63,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         },
                         'filter'=>Yii::$app->params['status']
                     ],
-                    //'created',
-                    'updated',
                 ],
             ]); ?>
 

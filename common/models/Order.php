@@ -51,15 +51,15 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'phone' => 'Phone',
-            'date' => 'Date',
-            'adults' => 'Adults',
-            'child' => 'Child',
-            'created' => 'Created',
-            'updated' => 'Updated',
+            'name' => 'FIO',
+            'phone' => 'Telefon raqami',
+            'date' => 'Sana',
+            'adults' => 'Kattalar',
+            'child' => 'Bolalar',
+            'created' => 'Kelib tushdi',
+            'updated' => 'O`zgartirildi',
             'status' => 'Status',
-            'travel_id' => 'Travel ID',
+            'travel_id' => 'Sayohat',
         ];
     }
 

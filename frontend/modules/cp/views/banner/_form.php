@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="banner-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options'=>['enctype' => 'multipart/form-data']]); ?>
 
     <div class="row">
         <div class="col-md-6">
@@ -18,6 +18,14 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'detail')->textarea(['rows' => 6]) ?>
+
+            <?= $form->field($model, 'name_ru')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($model, 'detail_ru')->textarea(['rows' => 6]) ?>
+
+            <?= $form->field($model, 'name_en')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($model, 'detail_en')->textarea(['rows' => 6]) ?>
 
             <?= $form->field($model, 'status')->dropDownList(Yii::$app->params['status']) ?>
         </div>

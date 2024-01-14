@@ -46,12 +46,12 @@ class Contact extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'FIO',
             'email' => 'Email',
-            'subject' => 'Subject',
-            'body' => 'Body',
-            'created' => 'Created',
-            'updated' => 'Updated',
+            'subject' => 'Mavzu',
+            'body' => 'Batafsil',
+            'created' => 'Kelib tushdi',
+            'updated' => 'So`ngi o`zgarish',
             'status' => 'Status',
         ];
     }
