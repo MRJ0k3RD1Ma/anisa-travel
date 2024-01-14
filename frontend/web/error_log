@@ -1,0 +1,97 @@
+[11-Jan-2024 10:17:36 Asia/Tashkent] An Error occurred while handling another error:
+Error: Class "common\models\SourceMessage" not found in /home/xorazmmt/anisatravel.uz/frontend/config/main.php:59
+Stack trace:
+#0 [internal function]: {closure}(Object(yii\i18n\MissingTranslationEvent))
+#1 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Object(Closure), Object(yii\i18n\MissingTranslationEvent))
+#2 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/i18n/MessageSource.php(117): yii\base\Component->trigger('missingTranslat...', Object(yii\i18n\MissingTranslationEvent))
+#3 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/i18n/MessageSource.php(87): yii\i18n\MessageSource->translateMessage('app', '\xD0\x92\xD1\x8B\xD1\x88\xD0\xB5\xD1\x83\xD0\xBF\xD0\xBE\xD0...', 'ru')
+#4 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/i18n/I18N.php(90): yii\i18n\MessageSource->translate('app', '\xD0\x92\xD1\x8B\xD1\x88\xD0\xB5\xD1\x83\xD0\xBF\xD0\xBE\xD0...', 'ru')
+#5 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/BaseYii.php(538): yii\i18n\I18N->translate('app', '\xD0\x92\xD1\x8B\xD1\x88\xD0\xB5\xD1\x83\xD0\xBF\xD0\xBE\xD0...', Array, 'ru')
+#6 /home/xorazmmt/anisatravel.uz/frontend/views/site/error.php(22): yii\BaseYii::t('app', '\xD0\x92\xD1\x8B\xD1\x88\xD0\xB5\xD1\x83\xD0\xBF\xD0\xBE\xD0...')
+#7 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/View.php(347): require('/home/xorazmmt/...')
+#8 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/View.php(257): yii\base\View->renderPhpFile('/home/xorazmmt/...', Array)
+#9 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/View.php(156): yii\base\View->renderFile('/home/xorazmmt/...', Array, Object(frontend\controllers\SiteController))
+#10 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/Controller.php(407): yii\base\View->render('error', Array, Object(frontend\controllers\SiteController))
+#11 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/web/ErrorAction.php(139): yii\base\Controller->render('error', Array)
+#12 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/web/ErrorAction.php(118): yii\web\ErrorAction->renderHtmlResponse()
+#13 [internal function]: yii\web\ErrorAction->run()
+#14 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/Action.php(93): call_user_func_array(Array, Array)
+#15 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\Action->runWithParams(Array)
+#16 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#17 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#18 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#19 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#20 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "favicon.ico". in /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('favicon.ico', Array)
+#1 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/anisatravel.uz/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Страница не найдена. in /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/anisatravel.uz/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/anisatravel.uz/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9,uz;q=0.8,tg;q=0.7,ru;q=0.6',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_COOKIE' => '_language=db60c3d028a0191b7e09f9b933e98f032c769cf53331b4c3b371692f672cbdf8a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_language%22%3Bi%3A1%3Bs%3A2%3A%22ru%22%3B%7D; _identity-frontend=3687ce9293b91da02959156af67140fc144491ab56e25da6b5d2eafb758e3bf8a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A74%3A%22%5B4%2C%22%242y%2413%24Hx9.Rv%2F1278Ap0H9MXMsEO6ghMsLP%2F6VZVaW4wJPTSSi85udZ6ili%22%2C2592000%5D%22%3B%7D; advanced-frontend=7d8cee27e5f263f5f9aba4a099255998; _csrf-frontend=605981cc3ab5023bd569d77f0266c1e44757528cffc9c859ba2e9be488bca738a%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225uK2A6EkD3TAUXyNEXaAkymwf-j5RAQs%22%3B%7D',
+    'HTTP_HOST' => 'anisatravel.uz',
+    'HTTP_REFERER' => 'https://anisatravel.uz/ru',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'HTTP_X_FORWARDED_HOST' => 'anisatravel.uz',
+    'HTTP_X_FORWARDED_PORT' => '443',
+    'HTTP_X_FORWARDED_PROTO' => 'https',
+    'HTTP_X_FORWARDED_SERVER' => 'anisatravel.uz',
+    'HTTP_X_REAL_IP' => '::ffff:213.230.92.191',
+    'HTTP_SEC_CH_UA' => '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+    'HTTP_SEC_CH_UA_MOBILE' => '?0',
+    'HTTP_SEC_CH_UA_PLATFORM' => '"Windows"',
+    'HTTP_SEC_FETCH_SITE' => 'same-origin',
+    'HTTP_SEC_FETCH_MODE' => 'no-cors',
+    'HTTP_SEC_FETCH_DEST' => 'image',
+    'HTTP_X_HTTPS' => '1',
+    'REDIRECT_UNIQUE_ID' => 'ZZ958BzCSGtC5dFn1c3pYAAAAFI',
+    'REDIRECT_SCRIPT_URL' => '/ru/favicon.ico',
+    'REDIRECT_SCRIPT_URI' => 'https://anisatravel.uz/ru/favicon.ico',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_HTTPS' => 'on',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'ZZ958BzCSGtC5dFn1c3pYAAAAFI',
+    'SCRIPT_URL' => '/ru/favicon.ico',
+    'SCRIPT_URI' => 'https://anisatravel.uz/ru/favicon.ico',
+    'HTTPS' => 'on',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'anisatravel.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '443',
+    'REMOTE_ADDR' => '213.230.92.191',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/anisatravel.uz',
+    'REQUEST_SCHEME' => 'https',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/anisatravel.uz',
+    'SERVER_ADMIN' => 'webmaster@anisatravel.uz.xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/anisatravel.uz/frontend/web/index.php',
+    'REMOTE_PORT' => '4590',
+    'REDIRECT_URL' => '/ru/favicon.ico',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/ru/favicon.ico',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1704950256.391808032989501953125,
+    'REQUEST_TIME' => 1704950256,
+    'argv' => [],
+    'argc' => 0,
+]

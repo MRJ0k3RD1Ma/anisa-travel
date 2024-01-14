@@ -231,17 +231,17 @@ if ($lang == 'uz') {
                                                         <div class="mb-3">
                                                             <label for="txtCheckAdults" class="form-label"><?= Yii::t('app','Взрослые')?></label>
                                                             <div class="input-group input-group-lg shadow-sm">
-                                                                <button class="btn btn-outline-light" type="button" data-minus-adults=""><i class="ti ti-minus"></i></button>
+                                                                <button class="btn btn-outline-light minus-adults" type="button" data-minus-adults=""><i class="ti ti-minus"></i></button>
                                                                 <input type="text" class="form-control text-center" name="Order[adults]" placeholder="<?= Yii::t('app','Взрослые')?>" value="1" aria-label="Adults" id="txtCheckAdults" data-input-adults="">
-                                                                <button class="btn btn-outline-light" type="button" data-plus-adults=""><i class="ti ti-plus"></i></button>
+                                                                <button class="btn btn-outline-light plus-adults" type="button" data-plus-adults=""><i class="ti ti-plus"></i></button>
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="txtCheckChildren" class="form-label"><?= Yii::t('app','Дети')?></label>
                                                             <div class="input-group input-group-lg shadow-sm">
-                                                                <button class="btn btn-outline-light" type="button" data-minus-children=""><i class="ti ti-minus"></i></button>
+                                                                <button class="btn btn-outline-light minus-child" type="button" data-minus-children=""><i class="ti ti-minus"></i></button>
                                                                 <input type="text" class="form-control text-center" name="Order[child]" placeholder="<?= Yii::t('app','Дети')?>" value="0" aria-label="Children" id="txtCheckChildren"  data-input-children="">
-                                                                <button class="btn btn-outline-light" type="button" data-plus-children=""><i class="ti ti-plus"></i></button>
+                                                                <button class="btn btn-outline-light plus-child" type="button" data-plus-children=""><i class="ti ti-plus"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -258,6 +258,32 @@ if ($lang == 'uz') {
                                                     </p>
                                                 </div>
                                             </div>
+
+                                            <?php
+                                                $this->registerJs("
+                                                    $('.minus-adults').click(function(){
+                                                        var val = $('#txtCheckAdults').val();
+                                                        if(val > 1) val --;
+                                                        $('#txtCheckAdults').val(val);
+                                                    });
+                                                    $('.plus-adults').click(function(){
+                                                        var val = $('#txtCheckAdults').val();
+                                                        val ++;
+                                                        $('#txtCheckAdults').val(val);
+                                                    });
+                                                    $('.minus-child').click(function(){
+                                                        var val = $('#txtCheckChildren').val();
+                                                        if(val > 0) val --;
+                                                        $('#txtCheckChildren').val(val);
+                                                    });
+                                                    $('.plus-child').click(function(){
+                                                        var val = $('#txtCheckChildren').val();
+                                                        val ++;
+                                                        $('#txtCheckChildren').val(val);
+                                                    });
+                                                ")
+                                            ?>
+
 
                                             <?php \yii\widgets\ActiveForm::end()?>
                                             <!-- Check Availability -->

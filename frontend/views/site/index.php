@@ -15,22 +15,47 @@ if($lang == 'uz'){
         <div class="swiper hero-swiper">
             <!-- Slide -->
             <div class="swiper-wrapper">
-                <div class="swiper-slide bg-image bg-image-wrapper" data-image-src="/frntd/img/h7.jpg"></div>
-                <div class="swiper-slide bg-image bg-image-wrapper" data-image-src="/frntd/img/h8.jpg"></div>
-                <div class="swiper-slide bg-image bg-image-wrapper" data-image-src="/frntd/img/h9.jpg"></div>
-            </div>
-            <!-- Slide -->
-            <!-- Caption -->
-            <div class="hero-caption">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-xl-6 col-lg-8">
-                            <h2 class="hero-title"><?= Yii::t('app','Исследуйте Европу')?></h2>
-                            <p class="hero-desc"><?= Yii::t('app','Исследуйте Европу и погрузитесь в ее великолепие и глубокое наследие. Посетите великолепные замки и окунитесь в страну романтической любви.')?></p>
+                <div class="swiper-slide bg-image bg-image-wrapper" data-image-src="/frntd/img/h7.jpg">
+                    <div class="hero-caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-xl-6 col-lg-8">
+                                    <h2 class="hero-title"><?= Yii::t('app','Исследуйте Европу')?></h2>
+                                    <p class="hero-desc"><?= Yii::t('app','Исследуйте Европу и погрузитесь в ее великолепие и глубокое наследие. Посетите великолепные замки и окунитесь в страну романтической любви.')?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-image bg-image-wrapper" data-image-src="/frntd/img/h8.jpg">
+                    <div class="hero-caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-xl-6 col-lg-8">
+                                    <h2 class="hero-title"><?= Yii::t('app','Исследуйasdasdте Европу')?></h2>
+                                    <p class="hero-desc"><?= Yii::t('app','Исследуйте Европу и погрузитесь в ее великолепие и глубокое наследие. Посетите великолепные замки и окунитесь в страну романтической любви.')?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-image bg-image-wrapper" data-image-src="/frntd/img/h9.jpg">
+                    <div class="hero-caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-xl-6 col-lg-8">
+                                    <h2 class="hero-title"><?= Yii::t('app','Исследуйте Еasdasdasdsaвропу')?></h2>
+                                    <p class="hero-desc"><?= Yii::t('app','Исследуйте Европу и погрузитесь в ее великолепие и глубокое наследие. Посетите великолепные замки и окунитесь в страну романтической любви.')?></p>
+                                    <p><button class="btn btn-primary">Batafsil</button></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Slide -->
+            <!-- Caption -->
+
             <!-- /Caption -->
             <!-- Navs & Dots -->
             <div class="hero-prev swiper-button-prev"></div>

@@ -250,6 +250,30 @@ if ($lang == 'uz') {
                                                 </div>
                                             </div>
 
+                                            <?php
+                                            $this->registerJs("
+                                                    $('.minus-adults').click(function(){
+                                                        var val = $('#txtCheckAdults').val();
+                                                        if(val > 1) val --;
+                                                        $('#txtCheckAdults').val(val);
+                                                    });
+                                                    $('.plus-adults').click(function(){
+                                                        var val = $('#txtCheckAdults').val();
+                                                        val ++;
+                                                        $('#txtCheckAdults').val(val);
+                                                    });
+                                                    $('.minus-child').click(function(){
+                                                        var val = $('#txtCheckChildren').val();
+                                                        if(val > 0) val --;
+                                                        $('#txtCheckChildren').val(val);
+                                                    });
+                                                    $('.plus-child').click(function(){
+                                                        var val = $('#txtCheckChildren').val();
+                                                        val ++;
+                                                        $('#txtCheckChildren').val(val);
+                                                    });
+                                                ")
+                                            ?>
                                             <?php \yii\widgets\ActiveForm::end()?>
                                             <!-- Check Availability -->
                                         </div>

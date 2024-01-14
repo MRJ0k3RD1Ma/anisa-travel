@@ -95,7 +95,7 @@ class DefaultController extends Controller
         $model = Message::find()->where(['language'=>'uz'])->all();
         /* @var $item Message*/
         foreach ($model as $item){
-            $text = GoogleTranslate::translate('ru','uz',stripslashes($item->translation));
+            $text = GoogleTranslate::translate('ru','uz',$item->translation);
             $item->translation = $text;
             $item->save(false);
         }

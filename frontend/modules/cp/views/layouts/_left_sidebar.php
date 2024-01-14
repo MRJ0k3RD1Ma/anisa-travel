@@ -38,9 +38,16 @@
                 </li>
 
                 <li>
-                    <a href="<?= Yii::$app->urlManager->createUrl(['/cp/category'])?>" class="dropdown-toggle no-arrow <?= Yii::$app->controller->id == 'user' ? 'active' : ''?>">
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cp/category'])?>" class="dropdown-toggle no-arrow <?= Yii::$app->controller->id == 'category' ? 'active' : ''?>">
                     <span class="micon bi bi-menu-button-wide"></span>
                     <span class="mtext">Menular</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cp/banner'])?>" class="dropdown-toggle no-arrow <?= Yii::$app->controller->id == 'banner' ? 'active' : ''?>">
+                    <span class="micon bi bi-file-slides"></span>
+                    <span class="mtext">Banner</span>
                     </a>
                 </li>
 
