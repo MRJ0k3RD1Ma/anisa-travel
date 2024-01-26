@@ -59,6 +59,12 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cp/text'])?>" class="dropdown-toggle no-arrow <?= Yii::$app->controller->id == 'text' ? 'active' : ''?>">
+                        <span class="micon bi bi-person"></span>
+                        <span class="mtext">Til sozlamalari</span>
+                    </a>
+                </li>
 
 
             </ul>

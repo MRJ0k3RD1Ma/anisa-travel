@@ -61,6 +61,23 @@ class ContactForm extends Model
         $model->subject = $this->subject;
         $model->body = $this->body;
         if($model->save()){
+            $token = "6798430186:AAGbjo91Paiwg5Xd7yHKXDV7s8n36chjk1s";
+
+            $url = "https://api.telegram.org/bot" . $token . "/sendMessage?chat_id=1641807191";
+            $message = "Yangi bo`lanish: anisatravel.uz/cp/contact/view?id=".$model->id."
+FIO: ".$model->name."
+email: ".$model->email."
+Mavzu: ".$model->subject."
+Batafsil: ".$model->body;
+            $url = $url . "&text=" . urlencode($message);
+            $ch = curl_init();
+            $optArray = array(
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true
+            );
+            curl_setopt_array($ch, $optArray);
+            $result = curl_exec($ch);
+            curl_close($ch);
             return true;
         }else{
             return false;

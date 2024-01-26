@@ -31,6 +31,7 @@ use Yii;
  * @property string|null $short_en
  * @property string|null $detail_ru
  * @property string|null $detail_en
+ * @property int $is_travel
  *
  *
  * @property Category $cat
@@ -53,11 +54,12 @@ class Travel extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cat_id', 'price', 'old_price', 'days', 'nights', 'is_fly', 'status',], 'integer'],
+            [['cat_id', 'price', 'old_price', 'days', 'nights', 'is_fly', 'status','is_travel',], 'integer'],
             [['short', 'detail','short_en','short_ru','detail_ru','detail_en'], 'string'],
             [['created', 'updated'], 'safe'],
             [['image', 'name', 'code','name_ru','name_en'], 'string', 'max' => 255],
             [['code'], 'unique'],
+            [['name','cat_id'],'required'],
             [['cat_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['cat_id' => 'id']],
             [['modify_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['modify_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
@@ -93,6 +95,7 @@ class Travel extends \yii\db\ActiveRecord
             'user_id' => 'Kiritdi',
             'modify_id' => 'O`zgartirdi',
             'code' => 'Code',
+            'is_travel' => 'Sayohat',
         ];
     }
 

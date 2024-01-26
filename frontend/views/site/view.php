@@ -82,7 +82,7 @@ if ($lang == 'uz') {
                 </div>
             <?php }?>
             <!-- Tour Photo -->
-            <?php if($model->cat->type_id == 1): ?>
+            <?php if(\common\models\TravelImage::find()->where(['travel_id'=>$model->id])->count('*') > 0  or $model->is_travel == 1): ?>
             <div class="tour-gallery position-relative mb-5">
                 <!-- Photo list -->
                 <div class="photo-list rounded-3 overflow-hidden d-flex align-items-center">
@@ -143,7 +143,7 @@ if ($lang == 'uz') {
                         <!-- Detai tour -->
                         <div class="detail-tour pe-0 pe-xl-5">
                             <div class="border-bottom pb-3 mb-5">
-                                <?php if($model->cat->type_id == 1){?>
+                                <?php if($model->is_travel == 1){?>
                                 <div class="row">
                                     <div class="col-12 col-xl-3 col-lg-4 col-md-6">
                                         <div class="mb-2">
@@ -180,7 +180,7 @@ if ($lang == 'uz') {
                         <!-- Detai tour -->
                     </div>
 
-                    <?php if($model->cat->type_id == 1){?>
+                    <?php if($model->is_travel == 1){?>
 
                     <div class="col-12 col-xl-3 order-0 order-xl-1">
                         <!-- Check tour -->

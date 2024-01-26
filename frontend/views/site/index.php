@@ -92,7 +92,7 @@ if($lang == 'uz'){
             <div class="swiper tour-swiper">
                 <!-- Tour list -->
                 <div class="swiper-wrapper">
-                    <?php foreach (\common\models\Travel::find()->where('cat_id in (select id from category where type_id = 1)')->orderBy(['id'=>SORT_DESC])->limit(6)->all() as $item):?>
+                    <?php foreach (\common\models\Travel::find()->where(['is_travel'=>1])->orderBy(['id'=>SORT_DESC])->limit(6)->all() as $item):?>
 
                         <div class="swiper-slide">
                         <!-- Tour item -->
@@ -108,7 +108,7 @@ if($lang == 'uz'){
                                 </div>
                                 <div class="tour-content p-3">
                                     <div class="tour-duration-location">
-                                        <span><?= $item->days?> - <?= Yii::t('app','День')?></span>
+                                        <span><?= $item->days?> - <?= Yii::t('app','дней')?> / <?= $item->nights?> - <?= Yii::t('app','ночей')?></span>
                                     </div>
                                     <h3 class="tour-title">
                                         <a href="<?= Yii::$app->urlManager->createUrl(['/site/view','code'=>$item->code])?>"><?= $item->{'name'.$lang}?></a>
@@ -304,7 +304,7 @@ if($lang == 'uz'){
         <!-- Blog mini -->
         <div class="blog-mini">
             <div class="row">
-                <?php foreach (\common\models\Travel::find()->where('cat_id in (select id from category where type_id = 2)')->orderBy(['id'=>SORT_DESC])->limit(9)->all() as $item):?>
+                <?php foreach (\common\models\Travel::find()->where(['<>','is_travel',1])->orderBy(['id'=>SORT_DESC])->limit(9)->all() as $item):?>
 
                     <div class="col-12 col-xl-4 col-lg-6 col-md-12">
                     <!-- Post -->

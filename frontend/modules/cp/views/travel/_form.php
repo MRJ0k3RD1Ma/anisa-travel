@@ -17,30 +17,35 @@ use yii\widgets\ActiveForm;
 
             <?= $form->field($model, 'cat_id')->dropDownList(\frontend\components\Menu::Sayohat(),['prompt'=>'Menuni tanlang']) ?>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <?= $form->field($model, 'price')->textInput() ?>
-
-                </div>
-                <div class="col-md-6">
-                    <?= $form->field($model, 'old_price')->textInput() ?>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <?= $form->field($model, 'days')->textInput() ?>
-
-
-                </div>
-                <div class="col-md-6">
-                    <?= $form->field($model, 'nights')->textInput() ?>
-
-
-                </div>
-            </div>
-
             <?= $form->field($model, 'status')->dropDownList(Yii::$app->params['status']) ?>
+
+            <?= $form->field($model,'is_travel')->checkbox(['value'=>1])?>
+
+            <div class="istravel" style="display: <?= $model->is_travel == 1 ? 'block' : ''?>">
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $form->field($model, 'price')->textInput() ?>
+
+                    </div>
+                    <div class="col-md-6">
+                        <?= $form->field($model, 'old_price')->textInput() ?>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <?= $form->field($model, 'days')->textInput() ?>
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <?= $form->field($model, 'nights')->textInput() ?>
+
+
+                    </div>
+                </div>
+
+            </div>
 
         </div>
         <div class="col-md-6">
@@ -181,5 +186,11 @@ $this->registerJs("
         $('#travel-image').change(function() {
           readURL(this);
         });
- 
+        $('#travel-is_travel').change(function(){
+            if($('#travel-is_travel').is(':checked')){
+                $('.istravel').css('display','block');
+            }else{
+                $('.istravel').css('display','none')
+            }
+        })
 ");

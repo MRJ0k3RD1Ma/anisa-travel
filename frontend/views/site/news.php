@@ -92,35 +92,38 @@ if ($lang == 'uz') {
                                     </a>
                                 </div>
                                 <div class="tour-content p-3">
-                                    <?php if($item->cat->type_id == 1){?>
+                                    <?php if($item->is_travel == 1){?>
                                     <div class="tour-duration-location">
-                                        <span><?= $item->days ?> <?= Yii::t('app','день')?></span>
+                                        <span><?= $item->days?> - <?= Yii::t('app','дней')?> / <?= $item->nights?> - <?= Yii::t('app','ночей')?></span>
                                     </div>
                                     <?php }?>
                                     <h3 class="tour-title">
                                         <a href="<?= Yii::$app->urlManager->createUrl(['/site/view', 'code' => $item->code]) ?>"><?= $item->{'name' . $lang} ?></a>
                                     </h3>
-                                    <?php if($item->cat->type_id == 1){?>
+                                    <?php if($item->is_travel == 1){?>
 
-                                    <div class="tour-price">
-                                        <div class="new-price text-danger">
-                                            <span><?= Yii::t('app','От')?>:</span>
-                                            <strong><sup>$</sup><?= $item->price ?></strong>
-                                        </div>
-                                        <?php if ($item->price < $item->old_price) { ?>
-                                            <div class="old-price">
-                                                <del class="ms-2 text-muted"><sup>$</sup><?= $item->old_price ?></del>
+                                        <div class="tour-price">
+                                            <div class="new-price text-danger">
+                                                <span><?= Yii::t('app','От')?>:</span>
+                                                <strong><sup>$</sup><?= $item->price ?></strong>
                                             </div>
-                                        <?php } ?>
-                                        <?php }?>
-                                    </div>
+                                            <?php if ($item->price < $item->old_price) { ?>
+                                                <div class="old-price">
+                                                    <del class="ms-2 text-muted"><sup>$</sup><?= $item->old_price ?></del>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+
+                                    <?php }?>
+
                                 </div>
                             </div>
                         </div>
-                        <!-- /Tour item -->
                     </div>
                 <?php endforeach; ?>
             </div>
+
+            <?= \yii\widgets\LinkPager::widget(['pagination'=>$pages]);?>
         </div>
     </div>
 </section>

@@ -294,6 +294,27 @@ class SiteController extends Controller
             if($model->load($this->request->post())){
                 $model->date = date('Y-m-d',strtotime($model->date));
                 if($model->save()){
+                    $token = "6798430186:AAGbjo91Paiwg5Xd7yHKXDV7s8n36chjk1s";
+
+                    $url = "https://api.telegram.org/bot" . $token . "/sendMessage?chat_id=1641807191";
+                    $message = "Yangi buyurtma: anisatravel.uz/cp/order/view?id=".$model->id."
+FIO: ".$model->name."
+Telefon: ".$model->phone."
+Sana: ".date('d.m.Y',strtotime($model->date))."
+Kattalar: ".$model->adults."
+Bolalar: ".$model->child."
+Sayohat: ".$model->travel->name;
+                    $url = $url . "&text=" . urlencode($message);
+                    $ch = curl_init();
+                    $optArray = array(
+                        CURLOPT_URL => $url,
+                        CURLOPT_RETURNTRANSFER => true
+                    );
+                    curl_setopt_array($ch, $optArray);
+                    $result = curl_exec($ch);
+                    curl_close($ch);
+
+
                     Yii::$app->session->setFlash('success',Yii::t('app','Поздравляем с бронированием! Наши сотрудники свяжутся с вами в ближайшее время.'));
                 }else{
                     Yii::$app->session->setFlash('error',Yii::t('app','Произошла ошибка бронирования, поскольку введенной информации было недостаточно. Пожалуйста, попробуйте еще раз.'));
